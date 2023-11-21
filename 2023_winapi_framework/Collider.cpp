@@ -40,21 +40,21 @@ void Collider::Render(HDC _dc)
 	RECT_RENDER(m_vFinalPos.x, m_vFinalPos.y, m_vScale.x, m_vScale.y, _dc);
 }
 
-void Collider::EnterCollision(Collider* _pOther)
+void Collider::EnterCollision()
 {
  	++m_check;
-	m_pOwner->EnterCollision(_pOther);
+	m_pOwner->EnterCollision();
 }
 
-void Collider::ExitCollision(Collider* _pOther)
+void Collider::ExitCollision()
 {
 	--m_check;
-	m_pOwner->ExitCollision(_pOther);
+	m_pOwner->ExitCollision();
 }
 
-void Collider::StayCollision(Collider* _pOther)
+void Collider::StayCollision()
 {
-	m_pOwner->StayCollision(_pOther);
+	m_pOwner->StayCollision();
 }
 
 void Collider::FinalUpdate()

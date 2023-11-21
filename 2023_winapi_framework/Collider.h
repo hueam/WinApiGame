@@ -12,9 +12,9 @@ public:
 	void FinalUpdate();
 	void Render(HDC _dc);
 public:
-	void EnterCollision(Collider* _pOther);
-	void ExitCollision(Collider* _pOther);
-	void StayCollision(Collider* _pOther);
+	void EnterCollision();
+	void ExitCollision();
+	void StayCollision();
 public:
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
 	void SetOffSetPos(Vec2 _vOffsetPos) 
