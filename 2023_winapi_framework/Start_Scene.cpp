@@ -1,16 +1,18 @@
 #include "pch.h"
 #include "Start_Scene.h"
 #include "Object.h"
+#include "Item.h"
+#include "TestItem.h"
 #include "Core.h"
 #include "KeyMgr.h"
 #include "CollisionMgr.h"
 #include "ResMgr.h"
 void Start_Scene::Init()
 {
-	//Object* pObj = new Player;
-	//pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
-	//pObj->SetScale(Vec2(100.f,100.f));
-	//AddObject(pObj, OBJECT_GROUP::PLAYER);
+	Object* pObj = new TestItem();
+	pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
+	pObj->SetScale(Vec2(100.f,100.f));
+	AddObject(pObj, OBJECT_GROUP::PLAYER);
 
 	//// 몬스터 세팅 마구마구 배치를 해봅시다.
 

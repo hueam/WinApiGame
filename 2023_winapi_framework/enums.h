@@ -28,6 +28,13 @@ enum class OBJECT_GROUP
 	MONSTER,
 	END = 30
 };
+enum class ITEM_TYPE
+{
+	TEST,
+	ONE,
+	END
+
+};
 
 enum class PEN_TYPE
 {

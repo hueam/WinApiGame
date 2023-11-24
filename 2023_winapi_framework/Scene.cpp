@@ -48,6 +48,10 @@ void Scene::Render(HDC _dc)
 				m_vecObj[i].erase(m_vecObj[i].begin() + j);
 		}
 	}
+	for (size_t i = 0; i < m_vecUI.size(); i++)
+	{
+		m_vecUI[i]->Render(_dc);
+	}
 }
 
 void Scene::Release()

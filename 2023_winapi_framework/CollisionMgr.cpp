@@ -100,21 +100,21 @@ bool CollisionMgr::IsCollision(Collider* _pLeft)
 void CollisionMgr::CheckGroup(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRight)
 {
 	// 작은쪽을 행으로 씁시다.
-	UINT Row = (UINT)_eLeft;
-	UINT Col = (UINT)_eRight;
-	Row = min(Row, Col);
+	//UINT Row = (UINT)_eLeft;
+	//UINT Col = (UINT)_eRight;
+	//Row = min(Row, Col);
 
-	//// 비트 연산
-	// 체크가 되어있다면
-	if (m_arrCheck[Row] & (1 << Col))
-	{
-		m_arrCheck[Row] &= ~(1 << Col);
-	}
-	// 체크가 안되어있다면r
-	else
-	{
-		m_arrCheck[Row] |= (1 << Col);
-	}
+	////// 비트 연산
+	//// 체크가 되어있다면
+	//if (m_arrCheck[Row] & (1 << Col))
+	//{
+	//	m_arrCheck[Row] &= ~(1 << Col);
+	//}
+	//// 체크가 안되어있다면r
+	//else
+	//{
+	//	m_arrCheck[Row] |= (1 << Col);
+	//}
 }
 
 void CollisionMgr::CheckReset()
