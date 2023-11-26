@@ -23,9 +23,8 @@ enum class KEY_TYPE
 enum class OBJECT_GROUP
 {
 	DEFAULT,
-	PLAYER,
-	BULLET,
-	MONSTER,
+	ITEM,
+	BUTTON,
 	END = 30
 };
 enum class ITEM_TYPE

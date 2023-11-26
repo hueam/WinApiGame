@@ -14,10 +14,10 @@ class CollisionMgr
 	SINGLE(CollisionMgr);
 public:
 	void Update();
-	void CheckGroup(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRight);
 	void CheckReset();
 private:
 	void CollisionGroupUpdate(OBJECT_GROUP _eLeft);
+	void UICollisionUpdate();
 	//void CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRight);
 	//bool IsCollision(Collider* _pLeft, Collider* _pRight);
 	bool IsCollision(Collider* _pLeft);

@@ -7,13 +7,22 @@
 #include "KeyMgr.h"
 #include "CollisionMgr.h"
 #include "ResMgr.h"
+#include "UIObject.h"
+#include "ButtonUI.h"
+#include "SceneUI.h"
+#include "Collider.h"
 void Start_Scene::Init()
 {
 	Object* pObj = new TestItem();
 	pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
 	pObj->SetScale(Vec2(100.f,100.f));
-	AddObject(pObj, OBJECT_GROUP::PLAYER);
+	AddObject(pObj, OBJECT_GROUP::ITEM);
 
+	SceneUI* ui = GetSceneUI();
+	UIObject* pUIObj = new ButtonUI(L"Bullet");
+	pUIObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2 + 300})));
+	pUIObj->SetScale(Vec2(300.f,100.f));
+	ui->AddUI(pUIObj);
 	//// 몬스터 세팅 마구마구 배치를 해봅시다.
 
 	//Vec2 vResolution = Core::GetInst()->GetResolution();
@@ -37,11 +46,9 @@ void Start_Scene::Init()
 	//}
 	// 사운드 세팅
 	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
-	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
+ 	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
 	ResMgr::GetInst()->Play(L"BGM");
 
-	// 충돌체크해야되는것들을 설정하자.
-	CollisionMgr::GetInst()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::MONSTER);
 }
 
 void Start_Scene::Update()

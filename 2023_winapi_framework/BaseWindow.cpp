@@ -2,6 +2,7 @@
 #include "BaseWindow.h"
 #include "Resource.h"
 #include "Core.h"
+#include "KeyMgr.h"
 BaseWindow::BaseWindow(POINT _ptResolution)
 	: m_hWnd(0)
 	, m_hInst(0)
@@ -75,6 +76,11 @@ LRESULT BaseWindow::WndProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _l
 {
     switch (_message)
     {
+    case WM_MOUSEWHEEL:
+    {
+        int zDelta = GET_WHEEL_DELTA_WPARAM(_wParam);
+    }
+    break;
     //    // 우리가 PAINT를 쓸까..?
     //case WM_PAINT:
     //{

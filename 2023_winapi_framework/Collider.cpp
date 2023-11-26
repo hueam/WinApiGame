@@ -5,7 +5,7 @@
 UINT Collider::m_sNextID = 0;
 Collider::Collider()
 	: m_pOwner(nullptr)
-	, m_vScale(Vec2(50.f,50.f))
+	, m_vScale(Vec2(100.f,100.f))
 	, m_ID(m_sNextID++)
 	, m_check(0)
 	, m_vFinalPos{}
@@ -37,9 +37,11 @@ void Collider::Render(HDC _dc)
 		ePen = PEN_TYPE::RED;
 	SelectGDI pen(_dc, ePen);
 	SelectGDI brush(_dc, BRUSH_TYPE::HOLLOW);
+	Vec2 vObjPos = m_pOwner->GetPos();
+
 	Vec2 vObjScale = m_pOwner->GetScale();
 
-	RECT_RENDER(m_vFinalPos.x, m_vFinalPos.y, vObjScale.x, vObjScale.y, _dc);
+	RECT_RENDER(vObjPos.x, vObjPos.y, vObjScale.x, vObjScale.y, _dc);
 }
 
 void Collider::EnterCollision()
@@ -63,6 +65,6 @@ void Collider::FinalUpdate()
 {
 	// Object위치를 따라가야 하는거야.
 	Vec2 vObjPos = m_pOwner->GetPos();
-	m_vFinalPos = vObjPos/* + m_vOffsetPos*/;
+	m_vFinalPos = vObjPos + m_vOffsetPos;
 }
 

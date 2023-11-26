@@ -65,6 +65,9 @@
     <Filter Include="Engine\09.Item">
       <UniqueIdentifier>{fb3f56a3-8be9-422e-88d0-34115ac7802c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\UIs">
+      <UniqueIdentifier>{3b052733-be6e-4032-80f5-da7e0cd3b774}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -154,6 +157,15 @@
     <ClInclude Include="TestItem.h">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
+    <ClInclude Include="UIObject.h">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneUI.h">
+      <Filter>Engine\05. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonUI.h">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -237,6 +249,15 @@
     </ClCompile>
     <ClCompile Include="TestItem.cpp">
       <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="UIObject.cpp">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneUI.cpp">
+      <Filter>Engine\05. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonUI.cpp">
+      <Filter>Engine\04. Object\UIs</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
