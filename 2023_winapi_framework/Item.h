@@ -1,17 +1,12 @@
 #pragma once
 #include "Object.h";
 class Texture;
-class Item :
-	public Object
+class Item 
 {
 public:
-	Item();
+	Item(ITEM_TYPE type);
 	~Item();
-public:
-	void Update() override;
-	void Render(HDC _dc) override;
 protected:
-	Texture* m_pTex;
 	ITEM_TYPE m_itmeType;
 };
 

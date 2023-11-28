@@ -3,7 +3,7 @@
 #include "Object.h"
 
 class TestItem
-	: public Item
+	: public Object
 {
 	const wstring name = L"Test";
 public:
@@ -17,5 +17,6 @@ public:
 private:
 	bool isEnter;
 	bool isZoom;
+	Texture* m_pTex;
 };
 

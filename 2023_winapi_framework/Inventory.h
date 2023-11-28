@@ -3,15 +3,12 @@
 
 class Inventory
 {
-public:
-	Inventory();
-	~Inventory();
-	
+	SINGLE(Inventory)
 public:
 	void SetInventory(int size);
 
 public:
-	void SelectItem(const Item& item);
+	void SelectItem(const Item item);
 	void UseItem(int idx);
 	//void UseItem(const Item& item);
 

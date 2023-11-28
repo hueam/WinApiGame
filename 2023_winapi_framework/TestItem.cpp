@@ -6,13 +6,14 @@
 #include "KeyMgr.h"
 #include "CameraMgr.h"
 #include "Core.h"
+#include "Inventory.h"
+#include "EventMgr.h"
 
 TestItem::TestItem()
 	: isEnter(false)
 	, isZoom(false)
 {
 	m_pTex = ResMgr::GetInst()->TexLoad(L"Bullet", L"Texture\\Bullet.bmp");
-	m_itmeType = ITEM_TYPE::TEST;
 	CreateCollider();
 }
 
@@ -32,27 +33,12 @@ void TestItem::ExitCollision()
 
 void TestItem::Update()
 {
-	if (KEY_DOWN(KEY_TYPE::E) && isEnter)
+	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter == true)
 	{
-		if (isZoom == false)
-		{
-			CameraMgr::GetInst()->SetPos(m_vPos);
-			CameraMgr::GetInst()->SetScale(5);
-		}
-		else
-		{
-			CameraMgr::GetInst()->Init();
-		}
-		isZoom = !isZoom;
+		Inventory::GetInst()->SelectItem(Item(ITEM_TYPE::TEST));
+		EventMgr::GetInst()->DeleteObject(this);
 	}
-	if (KEY_DOWN(KEY_TYPE::D) && isEnter)
-	{
-		CameraMgr::GetInst()->AddPos(4, 0);
-	}
-	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
-	{
-		CameraMgr::GetInst()->SetPos(m_vPos);
-	}
+
 }
 
 void TestItem::Render(HDC _dc)

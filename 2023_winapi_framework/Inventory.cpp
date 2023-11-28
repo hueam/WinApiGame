@@ -1,21 +1,21 @@
 #include "pch.h"
 #include "Inventory.h"
 
-Inventory::Inventory()
-{
-}
-
-Inventory::~Inventory()
-{
-	invenItems.clear();
-}
+//Inventory::Inventory()
+//{
+//}
+//
+//Inventory::~Inventory()
+//{
+//	invenItems.clear();
+//}
 
 void Inventory::SetInventory(int size)
 {
 	//
 }
 
-void Inventory::SelectItem(const Item& item)
+void Inventory::SelectItem(const Item item)
 {
 	// if() item->itemType != END
 	invenItems.push_back(item);
