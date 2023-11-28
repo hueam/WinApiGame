@@ -1,25 +1,11 @@
 ﻿#include "pch.h"
 #include "Inventory.h"
 
-Inventory::Inventory()
-{
-}
-
-Inventory::~Inventory()
-{
-	invenItems.clear();
-}
-
-void Inventory::SetInventory(int size)
-{
-	//
-}
-
 void Inventory::SelectItem(const Item& item)
 {
 	// if() item->itemType != END
 	invenItems.push_back(item);
-	SetInventory(++itemCnt);
+	++itemCnt;
 }
 
 void Inventory::UseItem(int idx) // add item in the inven Index
@@ -27,7 +13,7 @@ void Inventory::UseItem(int idx) // add item in the inven Index
 	if (idx >= 0 && idx < itemCnt)
 	{
 		invenItems.erase(invenItems.begin() + idx);
-		SetInventory(--itemCnt);
+		--itemCnt;
 	}
 }
 

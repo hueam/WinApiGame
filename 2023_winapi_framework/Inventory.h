@@ -3,12 +3,10 @@
 
 class Inventory
 {
-public:
-	Inventory();
-	~Inventory();
+	SINGLE(Inventory);
 
 public:
-	void SetInventory(int size);
+	vector<Item> GetCurrentInventory() { return invenItems; }
 
 public:
 	void SelectItem(const Item& item);
