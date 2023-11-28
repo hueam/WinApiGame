@@ -11,7 +11,7 @@ ButtonUI::ButtonUI()
 }
 
 ButtonUI::ButtonUI(wstring textureName) 
-	: UIObject(L"TestButton", textureName)
+	: UIObject(L"Bullet", textureName)
 	, m_bisEnter(false)
 	,m_bisMouseDown(false)
 {
