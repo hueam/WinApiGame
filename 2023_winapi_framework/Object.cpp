@@ -74,9 +74,15 @@ void Object::StayCollision()
 void Object::Component_Render(HDC _dc)
 {
 	if (nullptr != m_pCollider)
-		m_pCollider->Render(_dc);
+		m_pCollider->Render(_dc, false);
 	if (nullptr != m_pAnimator)
 		m_pAnimator->Render(_dc);
 
 }
 
+void Object::SetScale(Vec2 _vScale)
+{
+	m_vScale = _vScale;
+	if (m_pCollider != nullptr)
+		m_pCollider->SetScale(_vScale);
+}

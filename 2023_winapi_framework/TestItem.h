@@ -16,5 +16,6 @@ public:
 	void Render(HDC _dc) override;
 private:
 	bool isEnter;
+	bool isZoom;
 };
 

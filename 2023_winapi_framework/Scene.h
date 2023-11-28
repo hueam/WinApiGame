@@ -1,6 +1,7 @@
 #pragma once
 //#include "Object.h"
 class Object;
+class SceneUI;
 class Scene
 {
 public:
@@ -22,9 +23,14 @@ public:
 	{
 		m_vecObj[(UINT)_eType].push_back(_pObj);
 	}
+	SceneUI* GetSceneUI()
+	{
+		return ui;
+	}
+
 private:
 //	Object*  m_obj;
 	vector<Object*> m_vecObj[(UINT)OBJECT_GROUP::END];
-	vector<Object*> m_vecUI;
+	SceneUI* ui;
 };
 

@@ -1,8 +1,11 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Object.h"
+#include "SceneUI.h"
 Scene::Scene()
+	:ui(nullptr)
 {
+	ui = new SceneUI();
 }
 
 Scene::~Scene()
@@ -20,6 +23,7 @@ void Scene::Update()
 				m_vecObj[i][j]->Update();
 		}
 	}
+	ui->Update();
 }
 
 void Scene::FinalUpdate()
@@ -31,6 +35,7 @@ void Scene::FinalUpdate()
 			m_vecObj[i][j]->FinalUpdate();
 		}
 	}
+	ui->FinalUpdate();
 }
 
 void Scene::Render(HDC _dc)
@@ -48,10 +53,8 @@ void Scene::Render(HDC _dc)
 				m_vecObj[i].erase(m_vecObj[i].begin() + j);
 		}
 	}
-	for (size_t i = 0; i < m_vecUI.size(); i++)
-	{
-		m_vecUI[i]->Render(_dc);
-	}
+	ui->Render(_dc);
+	
 }
 
 void Scene::Release()
@@ -64,4 +67,6 @@ void Scene::Release()
 		}
 		m_vecObj[i].clear();
 	}
+	ui->Release();
+	delete ui;
 }

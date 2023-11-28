@@ -22,7 +22,8 @@ private:
 		VK_RETURN, VK_TAB, VK_ESCAPE, VK_LBUTTON, VK_RBUTTON };
 
 	POINT m_ptMouse;
-	Object* enterObject;
+
+
 public:
 	void Init();
 	void Update();
@@ -35,6 +36,5 @@ public:
 	{
 		return m_ptMouse;
 	}
-	void SetEnterObject(Object* obj) { enterObject = obj; }
 };
 
