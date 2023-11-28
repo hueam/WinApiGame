@@ -68,6 +68,9 @@
     <Filter Include="Engine\04. Object\UIs">
       <UniqueIdentifier>{3b052733-be6e-4032-80f5-da7e0cd3b774}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\CameraMgr">
+      <UniqueIdentifier>{34b187d4-baf7-4c6a-887d-1a9288b7906c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -166,6 +169,9 @@
     <ClInclude Include="ButtonUI.h">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClInclude>
+    <ClInclude Include="CameraMgr.h">
+      <Filter>Engine\03. Manager\CameraMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -258,6 +264,9 @@
     </ClCompile>
     <ClCompile Include="ButtonUI.cpp">
       <Filter>Engine\04. Object\UIs</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraMgr.cpp">
+      <Filter>Engine\03. Manager\CameraMgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

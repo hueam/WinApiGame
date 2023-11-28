@@ -20,7 +20,7 @@ private:
 	void UICollisionUpdate();
 	//void CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRight);
 	//bool IsCollision(Collider* _pLeft, Collider* _pRight);
-	bool IsCollision(Collider* _pLeft);
+	bool IsCollision(Collider* _pLeft, bool isUI);
 private:
 	// 그룹간의 충돌체크할 배열
 	UINT m_arrCheck[(UINT)OBJECT_GROUP::END];

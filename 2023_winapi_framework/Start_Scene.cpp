@@ -11,11 +11,17 @@
 #include "ButtonUI.h"
 #include "SceneUI.h"
 #include "Collider.h"
+#include "CameraMgr.h"
 void Start_Scene::Init()
 {
+	CameraMgr::GetInst()->Init();
 	Object* pObj = new TestItem();
 	pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
 	pObj->SetScale(Vec2(100.f,100.f));
+	AddObject(pObj, OBJECT_GROUP::ITEM);
+	pObj = new TestItem();
+	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 + 100, Core::GetInst()->GetResolution().y / 2 })));
+	pObj->SetScale(Vec2(100.f, 100.f));
 	AddObject(pObj, OBJECT_GROUP::ITEM);
 
 	SceneUI* ui = GetSceneUI();

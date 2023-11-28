@@ -7,6 +7,8 @@
 #include "KeyMgr.h"
 #include "SceneUI.h"
 #include "UIObject.h"
+#include "CameraMgr.h"
+#include "Core.h"
 void CollisionMgr::Update()
 {
 	for (UINT Row = 0; Row < (UINT)OBJECT_GROUP::END; ++Row)
@@ -46,7 +48,7 @@ void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft)
 			iter = m_mapColInfo.find(colID.ID);
 		}
 		// 충돌하네?
-		if (IsCollision(pLeftCol))
+		if (IsCollision(pLeftCol, false))
 		{
 			// 이전에도 충돌 중
 			if (iter->second)
@@ -80,7 +82,7 @@ void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft)
 			}
 		}
 	}
-	
+
 }
 
 void CollisionMgr::UICollisionUpdate()
@@ -110,7 +112,7 @@ void CollisionMgr::UICollisionUpdate()
 			iter = m_mapColInfo.find(colID.ID);
 		}
 		// 충돌하네?
-		if (IsCollision(pLeftCol))
+		if (IsCollision(pLeftCol, true))
 		{
 			// 이전에도 충돌 중
 			if (iter->second)
@@ -148,17 +150,44 @@ void CollisionMgr::UICollisionUpdate()
 
 
 
-bool CollisionMgr::IsCollision(Collider* _pLeft)
+bool CollisionMgr::IsCollision(Collider* _pLeft, bool isUI)
 {
 	POINT posPoint = KeyMgr::GetInst()->GetMousePos();
 
-	Vec2 vLeftPos = _pLeft->GetFinalPos();
-	Vec2 vLeftScale = _pLeft->GetScale();
-	if ((vLeftPos.x + vLeftScale.x * 0.5f) > posPoint.x && (vLeftPos.x - vLeftScale.x * 0.5f) < posPoint.x)
+	Vec2 vPos = _pLeft->GetFinalPos();
+	Vec2 vScale = _pLeft->GetScale();
+
+	Vec2 vCamPos = CameraMgr::GetInst()->GetPos();
+	Vec2 vCamScale = CameraMgr::GetInst()->GetScale();
+	Vec2 vMinusCamScale = CameraMgr::GetInst()->GetScale();
+	vMinusCamScale.x -= 1;
+	vMinusCamScale.y -= 1;
+
+	Vec2 vRenderPos = vPos - vCamPos;
+	Vec2 vRenderScale = vScale * vCamScale;
+
+	Vec2 vResolution = Core::GetInst()->GetResolution();
+	vResolution.x = vResolution.x / 2;
+	vResolution.y = vResolution.y / 2;
+	vRenderPos = vRenderPos + (vRenderPos - vResolution) * vMinusCamScale;
+
+	if (isUI)
 	{
-		if ((vLeftPos.y + vLeftScale.y * 0.5f) > posPoint.y && (vLeftPos.y - vLeftScale.y * 0.5f) < posPoint.y)
-			return true;
+		if ((vPos.x + vScale.x * 0.5f) > posPoint.x && (vPos.x - vScale.x * 0.5f) < posPoint.x)
+		{
+			if ((vPos.y + vScale.y * 0.5f) > posPoint.y && (vPos.y - vScale.y * 0.5f) < posPoint.y)
+				return true;
+		}
 	}
+	else
+	{
+		if ((vRenderPos.x + vRenderScale.x * 0.5f) > posPoint.x && (vRenderPos.x - vRenderScale.x * 0.5f) < posPoint.x)
+		{
+			if ((vRenderPos.y + vRenderScale.y * 0.5f) > posPoint.y && (vRenderPos.y - vRenderScale.y * 0.5f) < posPoint.y)
+				return true;
+		}
+	}
+
 
 	return false;
 }
