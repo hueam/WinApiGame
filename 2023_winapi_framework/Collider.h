@@ -10,7 +10,7 @@ public:
 	Collider& operator = (Collider& _origin) = delete;
 public:
 	void FinalUpdate();
-	void Render(HDC _dc);
+	void Render(HDC _dc, bool isUI);
 public:
 	void EnterCollision();
 	void ExitCollision();

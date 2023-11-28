@@ -11,6 +11,7 @@ public:
 public:
 	void Update() override;
 	void Render(HDC _dc) override;
+	void Component_Render(HDC _dc) override;
 protected:
 	Texture* m_pTex;
 };

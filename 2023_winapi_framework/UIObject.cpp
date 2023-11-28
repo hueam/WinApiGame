@@ -2,6 +2,7 @@
 #include "UIObject.h"
 #include "ResMgr.h"
 #include "Texture.h"
+#include "Collider.h"
 
 UIObject::UIObject()
 	:m_pTex(nullptr)
@@ -37,4 +38,11 @@ void UIObject::Render(HDC _dc)
 		, vScale.x, vScale.y, m_pTex->GetDC()
 		, 0, 0, Width, Height, RGB(255, 0, 255));
 	Component_Render(_dc);
+}
+
+void UIObject::Component_Render(HDC _dc)
+{
+
+	if (nullptr != m_pCollider)
+		m_pCollider->Render(_dc, true);
 }
