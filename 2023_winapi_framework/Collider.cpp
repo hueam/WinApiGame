@@ -81,8 +81,20 @@ void Collider::StayCollision()
 void Collider::FinalUpdate()
 {
 	// Object위치를 따라가야 하는거야
-	Vec2 vCamPos = CameraMgr::GetInst()->GetPos();
 	Vec2 vObjPos = m_pOwner->GetPos();
-	m_vFinalPos = vObjPos - vCamPos;
+
+	Vec2 vCamPos = CameraMgr::GetInst()->GetPos();
+	Vec2 vCamScale = CameraMgr::GetInst()->GetScale();
+	Vec2 vMinusCamScale = CameraMgr::GetInst()->GetScale();
+	vMinusCamScale.x -= 1;
+	vMinusCamScale.y -= 1;
+
+	Vec2 vRenderPos = vObjPos - vCamPos;
+
+	Vec2 vResolution = Core::GetInst()->GetResolution();
+	vResolution.x = vResolution.x / 2;
+	vResolution.y = vResolution.y / 2;
+	vRenderPos = vRenderPos + (vRenderPos - vResolution) * vMinusCamScale;
+	m_vFinalPos = vRenderPos;
 }
 

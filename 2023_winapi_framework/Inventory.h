@@ -1,19 +1,21 @@
 #pragma once
 #include "Item.h"
 
+class InventoryUI;
 class Inventory
 {
 	SINGLE(Inventory)
 public:
-	void SetInventory(int size);
-
-public:
-	void SelectItem(const Item item);
+	void SelectItem(Item* item);
 	void UseItem(int idx);
+	vector<Item*> GetItemVector()
+	{
+		return invenItems;
+	}
 	//void UseItem(const Item& item);
 
 private:
-	vector<Item> invenItems; // or using map
+	vector<Item*> invenItems; // or using map
 	int itemCnt = 0; // current item cnt
 };
 

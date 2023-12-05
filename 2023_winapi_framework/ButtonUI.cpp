@@ -31,7 +31,10 @@ void ButtonUI::Update()
 	}
 	if (KEY_UP(KEY_TYPE::LBUTTON)&& m_bisMouseDown == true)
 	{
-		SceneMgr::GetInst()->LoadScene(L"Game_Scene");
+		SceneMgr::GetInst()->LoadScene(L"West_Game_Scene");
+		SceneMgr::GetInst()->InitScene(L"East_Game_Scene");
+		SceneMgr::GetInst()->InitScene(L"North_Game_Scene");
+		SceneMgr::GetInst()->InitScene(L"South_Game_Scene");
 	}
 }
 

@@ -14,14 +14,14 @@ public:
 	virtual void Render(HDC _dc);
 	virtual void Release();
 public:
-	const vector<Object*>& GetGroupObject(OBJECT_GROUP _etype) const
+	const vector<Object*>& GetGroupObject() const
 	{
-		return m_vecObj[(UINT)_etype];
+		return m_vecObj;
 	}
 public:
-	void AddObject(Object* _pObj, OBJECT_GROUP _eType)
+	void AddObject(Object* _pObj)
 	{
-		m_vecObj[(UINT)_eType].push_back(_pObj);
+		m_vecObj.push_back(_pObj);
 	}
 	SceneUI* GetSceneUI()
 	{
@@ -30,7 +30,7 @@ public:
 
 private:
 //	Object*  m_obj;
-	vector<Object*> m_vecObj[(UINT)OBJECT_GROUP::END];
+	vector<Object*> m_vecObj;
 	SceneUI* ui;
 };
 

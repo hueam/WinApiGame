@@ -35,10 +35,14 @@ void TestItem::Update()
 {
 	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter == true)
 	{
-		Inventory::GetInst()->SelectItem(Item(ITEM_TYPE::TEST));
+		Inventory::GetInst()->SelectItem(new Item(ITEM_TYPE::TEST,m_pTex));
 		EventMgr::GetInst()->DeleteObject(this);
 	}
-
+	if (KEY_DOWN(KEY_TYPE::E) && isEnter == true)
+	{
+		CameraMgr::GetInst()->SetPos(m_vPos);
+		CameraMgr::GetInst()->SetScale(2);
+	}
 }
 
 void TestItem::Render(HDC _dc)

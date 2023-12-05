@@ -4,7 +4,6 @@ struct tEvent
 {
 	EVENT_TYPE eEve; // 이벤트 타입
 	Object* Obj;
-	OBJECT_GROUP ObjType;
 };
 class EventMgr
 {

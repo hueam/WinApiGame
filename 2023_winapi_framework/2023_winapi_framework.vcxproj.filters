@@ -68,6 +68,9 @@
     <Filter Include="Engine\04. Object\UIs">
       <UniqueIdentifier>{3b052733-be6e-4032-80f5-da7e0cd3b774}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\MainScene\Game_Scene">
+      <UniqueIdentifier>{1de1ed1d-b334-41c8-96af-f3e80c39d160}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -111,9 +114,6 @@
     </ClInclude>
     <ClInclude Include="SceneMgr.h">
       <Filter>Engine\03. Manager\SceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_Scene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
     <ClInclude Include="Start_Scene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
@@ -170,6 +170,27 @@
     <ClInclude Include="InventoryUI.h">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClInclude>
+    <ClInclude Include="CameraMgr.h" />
+    <ClInclude Include="West_Game_Scene.h">
+      <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="South_Game_Scene.h">
+      <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="North_Game_Scene.h">
+      <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="East_Game_Scene.h">
+      <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Scene.h" />
+    <ClInclude Include="Locker.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lockers.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Slot.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -208,9 +229,6 @@
     </ClCompile>
     <ClCompile Include="SceneMgr.cpp">
       <Filter>Engine\03. Manager\SceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Game_Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
     <ClCompile Include="Start_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
@@ -267,5 +285,26 @@
     <ClCompile Include="InventoryUI.cpp">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClCompile>
+    <ClCompile Include="CameraMgr.cpp" />
+    <ClCompile Include="West_Game_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="North_Game_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="South_Game_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="East_Game_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Scene.cpp" />
+    <ClCompile Include="Locker.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Lockers.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Slot.cpp" />
   </ItemGroup>
 </Project>

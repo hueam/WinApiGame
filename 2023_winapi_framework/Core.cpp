@@ -7,6 +7,7 @@
 #include "ResMgr.h"
 #include "CollisionMgr.h"
 #include "EventMgr.h"
+#include "Inventory.h"
 bool Core::Init(HWND _hWnd, POINT _ptResolution)
 {
 	// === 변수 초기화 === 
@@ -31,6 +32,7 @@ bool Core::Init(HWND _hWnd, POINT _ptResolution)
 
 	CreateGDI();
 	// ==== Manager Init ====
+
 	PathMgr::GetInst()->Init();
 	TimeMgr::GetInst()->Init();
 	KeyMgr::GetInst()->Init();

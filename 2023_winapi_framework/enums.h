@@ -20,19 +20,28 @@ enum class KEY_TYPE
 	// LAST의미: 끝이라는 뜻이야
 };
 
-enum class OBJECT_GROUP
-{
-	DEFAULT,
-	ITEM,
-	BUTTON,
-	END = 30
-};
 enum class ITEM_TYPE
 {
 	TEST,
 	ONE,
 	END
+};
 
+enum class UI_RENDER_ORDER
+{
+	INVENTORY,
+	SLOT,
+	ITEM,
+	BUTTON,
+	END=4
+};
+
+enum class GAME_SCENE_TYPE
+{
+	WEST,
+	NORTH,
+	EAST,
+	SOUTH
 };
 
 enum class PEN_TYPE

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Object.h"
+#include "UIObject.h"
 #include "SceneUI.h"
 Scene::Scene()
 	:ui(nullptr)
@@ -11,62 +12,51 @@ Scene::Scene()
 Scene::~Scene()
 {
 	Release();
+	delete ui;
+
 }
 
 void Scene::Update()
 {
-	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
+	for (size_t j = 0; j < m_vecObj.size(); ++j)
 	{
-		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
-		{
-			if(!m_vecObj[i][j]->GetIsDead())
-				m_vecObj[i][j]->Update();
-		}
+		if (!m_vecObj[j]->GetIsDead())
+			m_vecObj[j]->Update();
 	}
 	ui->Update();
 }
 
 void Scene::FinalUpdate()
 {
-	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
+	for (size_t j = 0; j < m_vecObj.size(); ++j)
 	{
-		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
-		{
-			m_vecObj[i][j]->FinalUpdate();
-		}
+		m_vecObj[j]->FinalUpdate();
 	}
 	ui->FinalUpdate();
 }
 
 void Scene::Render(HDC _dc)
 {
-	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
+	for (size_t j = 0; j < m_vecObj.size();)
 	{
-		for (size_t j = 0; j < m_vecObj[i].size();)
+		if (!m_vecObj[j]->GetIsDead())
 		{
-			if (!m_vecObj[i][j]->GetIsDead())
-			{
-				m_vecObj[i][j]->Render(_dc);
-				++j;
-			}
-			else
-				m_vecObj[i].erase(m_vecObj[i].begin() + j);
+			m_vecObj[j]->Render(_dc);
+			++j;
 		}
+		else
+			m_vecObj.erase(m_vecObj.begin() + j);
 	}
 	ui->Render(_dc);
-	
+
 }
 
 void Scene::Release()
 {
-	for (UINT i = 0; i < (UINT)OBJECT_GROUP::END; ++i)
+	for (size_t j = 0; j < m_vecObj.size(); ++j)
 	{
-		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
-		{
-			delete m_vecObj[i][j];
-		}
-		m_vecObj[i].clear();
+		delete m_vecObj[j];
 	}
+	m_vecObj.clear();
 	ui->Release();
-	delete ui;
 }
