@@ -46,3 +46,9 @@ void UIObject::Component_Render(HDC _dc)
 	if (nullptr != m_pCollider)
 		m_pCollider->Render(_dc, true);
 }
+
+void UIObject::FinalUpdate()
+{
+	if (m_pCollider)
+		m_pCollider->FinalUpdate(true);
+}

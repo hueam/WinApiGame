@@ -78,7 +78,7 @@ void Collider::StayCollision()
 	m_pOwner->StayCollision();
 }
 
-void Collider::FinalUpdate()
+void Collider::FinalUpdate(bool isUI)
 {
 	// Object위치를 따라가야 하는거야
 	Vec2 vObjPos = m_pOwner->GetPos();
@@ -95,6 +95,9 @@ void Collider::FinalUpdate()
 	vResolution.x = vResolution.x / 2;
 	vResolution.y = vResolution.y / 2;
 	vRenderPos = vRenderPos + (vRenderPos - vResolution) * vMinusCamScale;
-	m_vFinalPos = vRenderPos;
+	if (isUI)
+		m_vFinalPos = vObjPos;
+	else
+		m_vFinalPos = vRenderPos;
 }
 

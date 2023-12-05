@@ -47,7 +47,7 @@ void Object::Update()
 void Object::FinalUpdate()
 {
 	if (m_pCollider)
-		m_pCollider->FinalUpdate();
+		m_pCollider->FinalUpdate(false);
 }
 
 void Object::Render(HDC _dc)
