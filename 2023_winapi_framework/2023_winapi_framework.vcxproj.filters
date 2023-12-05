@@ -191,6 +191,9 @@
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
     <ClInclude Include="Slot.h" />
+    <ClInclude Include="Window.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -306,5 +309,8 @@
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
     <ClCompile Include="Slot.cpp" />
+    <ClCompile Include="Window.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

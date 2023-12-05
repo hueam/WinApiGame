@@ -209,6 +209,7 @@
     <ClInclude Include="TimeMgr.h" />
     <ClInclude Include="UIObject.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -247,6 +248,7 @@
     <ClCompile Include="TimeMgr.cpp" />
     <ClCompile Include="UIObject.cpp" />
     <ClCompile Include="Vec2.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc" />
