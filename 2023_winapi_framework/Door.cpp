@@ -1,34 +1,33 @@
 #include "pch.h"
-#include "Window.h"
+#include "Door.h"
 #include "KeyMgr.h"
 #include "ResMgr.h"
 #include "CameraMgr.h"
 #include "Core.h"
 #include "Texture.h"
 
-Window::Window()
-	: isOpen(false), isEnter(false)
+Door::Door() : isOpen(false), isEnter(false)
 {
-	m_pOpenTex = ResMgr::GetInst()->TexLoad(L"CloseWindow", L"Texture\\window_password_opened.bmp");
-	m_pCloseTex = ResMgr::GetInst()->TexLoad(L"OpenWindow", L"Texture\\window_password.bmp");
+	m_pOpenTex = ResMgr::GetInst()->TexLoad(L"CloseDoor", L"Texture\\door_open.bmp");
+	m_pCloseTex = ResMgr::GetInst()->TexLoad(L"OpenDoor", L"Texture\\door_close.bmp");
 	CreateCollider();
 }
 
-Window::~Window()
+Door::~Door()
 {
 }
 
-void Window::EnterCollision()
+void Door::EnterCollision()
 {
 	isEnter = true;
 }
 
-void Window::ExitCollision()
+void Door::ExitCollision()
 {
 	isEnter = false;
 }
 
-void Window::Update()
+void Door::Update()
 {
 	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
 	{
@@ -36,10 +35,11 @@ void Window::Update()
 	}
 }
 
-void Window::Render(HDC _dc)
+void Door::Render(HDC _dc)
 {
+
 	Texture* curTex;
-	
+
 	if (isOpen) curTex = m_pOpenTex;
 	else curTex = m_pCloseTex;
 
@@ -72,7 +72,7 @@ void Window::Render(HDC _dc)
 		, y
 		, vRenderScale.x, vRenderScale.y, curTex->GetDC()
 		, 0, 0, Width, Height, RGB(255, 0, 255));
-	
+
 	Component_Render(_dc);
 	if (isEnter)
 		TextOut(_dc, vRenderPos.x, vRenderPos.y, name.c_str(), name.size());
