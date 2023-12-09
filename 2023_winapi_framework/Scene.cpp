@@ -18,34 +18,43 @@ Scene::~Scene()
 
 void Scene::Update()
 {
-	for (size_t j = 0; j < m_vecObj.size(); ++j)
+	for (int i = 0; i < (int)RENDER_ORDER::END; i++)
 	{
-		if (!m_vecObj[j]->GetIsDead())
-			m_vecObj[j]->Update();
+		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
+		{
+			if (!m_vecObj[i][j]->GetIsDead())
+				m_vecObj[i][j]->Update();
+		}
 	}
 	ui->Update();
 }
 
 void Scene::FinalUpdate()
 {
-	for (size_t j = 0; j < m_vecObj.size(); ++j)
+	for (int i = 0; i < (int)RENDER_ORDER::END; i++)
 	{
-		m_vecObj[j]->FinalUpdate();
+		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
+		{
+			m_vecObj[i][j]->FinalUpdate();
+		}
 	}
 	ui->FinalUpdate();
 }
 
 void Scene::Render(HDC _dc)
 {
-	for (size_t j = 0; j < m_vecObj.size();)
+	for (int i = 0; i < (int)RENDER_ORDER::END; i++)
 	{
-		if (!m_vecObj[j]->GetIsDead())
+		for (size_t j = 0; j < m_vecObj[i].size();)
 		{
-			m_vecObj[j]->Render(_dc);
-			++j;
+			if (!m_vecObj[i][j]->GetIsDead())
+			{
+				m_vecObj[i][j]->Render(_dc);
+				++j;
+			}
+			else
+				m_vecObj[i].erase(m_vecObj[i].begin() + j);
 		}
-		else
-			m_vecObj.erase(m_vecObj.begin() + j);
 	}
 	ui->Render(_dc);
 
@@ -53,10 +62,13 @@ void Scene::Render(HDC _dc)
 
 void Scene::Release()
 {
-	for (size_t j = 0; j < m_vecObj.size(); ++j)
+	for (int i = 0; i < (int)RENDER_ORDER::END; i++)
 	{
-		delete m_vecObj[j];
+		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
+		{
+			delete m_vecObj[i][j];
+		}
+		m_vecObj[i].clear();
 	}
-	m_vecObj.clear();
 	ui->Release();
 }

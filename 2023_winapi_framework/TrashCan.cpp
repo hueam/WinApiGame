@@ -4,20 +4,43 @@
 #include "CameraMgr.h"
 #include "Core.h"
 #include "Texture.h"
+#include "ResMgr.h"
+#include "TrashCanPopup.h"
+#include "SceneMgr.h"
+#include "Scene.h"
+#include "SceneUI.h"
 
 TrashCan::TrashCan()
+	:isEnter(false)
 {
+	m_pTex = ResMgr::GetInst()->TexLoad(L"TrashCan", L"Texture\\trashcan.bmp");
+	m_pTrashCanPopup = new TrashCanPopup(Core::GetInst()->GetGamgeScreenCenter(),Vec2(700, 700), L"TrashcanPopup", L"trashcan_zoom_nocover");
+	SceneMgr::GetInst()->GetCurScene()->GetSceneUI()->AddDontDestroyUI(m_pTrashCanPopup, UI_RENDER_ORDER::POPUP);
+	CreateCollider();
 }
 
 TrashCan::~TrashCan()
 {
 }
 
-void TrashCan::Update()
+void TrashCan::FinalUpdate()
 {
-	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
+	Object::FinalUpdate();
+	if (KeyMgr::GetInst()->GetCurHIghObject() == this)
 	{
-
+		if (KEY_DOWN(KEY_TYPE::LBUTTON))
+		{
+			if (CameraMgr::GetInst()->GetFocusingObj() == this)
+			{
+				m_pTrashCanPopup->Open();
+			}
+			else if (isEnter)
+			{
+				CameraMgr::GetInst()->SetPos(m_vPos + Vec2(0, -20));
+				CameraMgr::GetInst()->SetScale(3);
+				CameraMgr::GetInst()->SetFocusingObj(this);
+			}
+		}
 	}
 }
 

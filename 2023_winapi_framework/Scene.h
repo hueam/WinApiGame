@@ -14,14 +14,14 @@ public:
 	virtual void Render(HDC _dc);
 	virtual void Release();
 public:
-	const vector<Object*>& GetGroupObject() const
+	const vector<Object*>& GetGroupObject(RENDER_ORDER type) const
 	{
-		return m_vecObj;
+		return m_vecObj[(int)type];
 	}
 public:
-	void AddObject(Object* _pObj)
+	void AddObject(Object* _pObj, RENDER_ORDER type)
 	{
-		m_vecObj.push_back(_pObj);
+		m_vecObj[(int)type].push_back(_pObj);
 	}
 	SceneUI* GetSceneUI()
 	{
@@ -30,7 +30,7 @@ public:
 
 private:
 //	Object*  m_obj;
-	vector<Object*> m_vecObj;
+	vector<Object*> m_vecObj[(int)RENDER_ORDER::END];
 	SceneUI* ui;
 };
 

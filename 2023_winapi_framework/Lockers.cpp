@@ -2,6 +2,8 @@
 #include "Lockers.h"
 #include "Scene.h"
 #include "Locker.h"
+#include "WaterBottle.h"
+#include "Post.h"
 
 Lockers::Lockers(Scene* curScene, float lockerSize, Vec2 pos)
 {
@@ -20,7 +22,22 @@ Lockers::Lockers(Scene* curScene, float lockerSize, Vec2 pos)
 			temp->SetIsPost(b);
 			temp->SetIsLocked(b);
 			objArr[i][j] = temp;
-			curScene->AddObject(temp);
+			curScene->AddObject(temp, RENDER_ORDER::ONE);
+			if (b)
+			{
+				Post* post = new Post(temp);
+				post->SetPos(Vec2(x, y));
+				post->SetScale(Vec2(50, 65));
+				curScene->AddObject(post, RENDER_ORDER::TWO);
+			}
+			if (j == 0 && i == 1)
+			{
+				WaterBottle* bottle = new WaterBottle();
+				bottle->SetOwner(temp);
+				bottle->SetPos(Vec2(x, y + lockerSize * 0.2f));
+				bottle->SetScale(Vec2(20.f, lockerSize * 0.5f));
+				curScene->AddObject(bottle, RENDER_ORDER::TWO);
+			}
 		}
 	}
 }

@@ -7,13 +7,17 @@
 #include "CollisionMgr.h"
 #include "Lockers.h"
 #include "CameraMgr.h"
+#include "TrashCan.h"
 
 void West_Game_Scene::Init()
 {
 	SceneUI* ui = GetSceneUI();
 	CameraMgr::GetInst()->Init();
-	Object* pObj = new Lockers(this, 100, Vec2({ Core::GetInst()->GetResolution().x / 2 - 200, Core::GetInst()->GetResolution().y - 250 }));
-	AddObject(pObj);
+	Object pObj = Lockers(this, 100, Vec2({ Core::GetInst()->GetResolution().x / 2 - 200, Core::GetInst()->GetResolution().y - 250 }));
+	Object* tc = new TrashCan();
+	tc->SetPos(Vec2({ Core::GetInst()->GetResolution().x / 2 - 500, Core::GetInst()->GetResolution().y - 150 }));
+	tc->SetScale(Vec2({ 150,200 }));
+	AddObject(tc,RENDER_ORDER::ONE);
 
 
 

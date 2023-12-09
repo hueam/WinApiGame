@@ -15,19 +15,19 @@ void South_Game_Scene::Init()
 	Object* pObj = new TestItem();
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
 	pObj->SetScale(Vec2(100.f, 100.f));
-	AddObject(pObj);
+	AddObject(pObj,RENDER_ORDER::ONE);
 	pObj = new TestItem();
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2+100, Core::GetInst()->GetResolution().y / 2 })));
 	pObj->SetScale(Vec2(100.f, 100.f));
-	AddObject(pObj);
+	AddObject(pObj, RENDER_ORDER::ONE);
 	pObj = new TestItem();
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2-100, Core::GetInst()->GetResolution().y / 2 })));
 	pObj->SetScale(Vec2(100.f, 100.f));
-	AddObject(pObj);
+	AddObject(pObj, RENDER_ORDER::ONE);
 	pObj = new TestItem();
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 +100})));
 	pObj->SetScale(Vec2(100.f, 100.f));
-	AddObject(pObj);
+	AddObject(pObj, RENDER_ORDER::ONE);
 
 }
 

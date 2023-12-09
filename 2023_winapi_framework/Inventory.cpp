@@ -3,6 +3,7 @@
 #include "InventoryUI.h"
 #include "SceneUi.h"
 #include "Core.h"
+#include "EventMgr.h"
 
 //Inventory::Inventory()
 //{
@@ -17,17 +18,20 @@ void Inventory::SelectItem(Item* item)
 {
 	// if() item->itemType != END
 	invenItems.push_back(item);
-	SceneUI::AddDontDestroyUI(item,UI_RENDER_ORDER::ITEM);
+	SceneUI::AddDontDestroyUI(item, UI_RENDER_ORDER::ITEM);
 	++itemCnt;
 }
 
-void Inventory::UseItem(int idx) // 클릭된 인벤 idx 받아오기
+void Inventory::DeleteItem(Item* item) // 클릭된 인벤 idx 받아오기
 {
-	if (idx >= 0 && idx < itemCnt)
+	for (int i = 0; i < invenItems.size(); i++)
 	{
-		delete invenItems[idx];
-		invenItems.erase(invenItems.begin() + idx);
-		--itemCnt;
+		if (invenItems[i] == item)
+		{
+			EventMgr::GetInst()->DeleteObject(invenItems[i]);
+			invenItems.erase(invenItems.begin() + i);
+			--itemCnt;
+		}
 	}
 }
 

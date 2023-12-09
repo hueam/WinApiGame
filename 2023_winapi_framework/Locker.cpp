@@ -5,6 +5,9 @@
 #include "CameraMgr.h"
 #include "Core.h"
 #include "Texture.h"
+#include "Collider.h"
+#include "Item.h"
+#include "Inventory.h"
 
 Locker::Locker()
 	:isOpen(false)
@@ -15,7 +18,6 @@ Locker::Locker()
 	m_pOpenTex = ResMgr::GetInst()->TexLoad(L"OpenLocker", L"Texture\\OpenLocker.bmp");
 	m_pCloseTex = ResMgr::GetInst()->TexLoad(L"CloseLocker", L"Texture\\CloseLocker.bmp");
 	m_pLockedCloseTex = ResMgr::GetInst()->TexLoad(L"LockCloseLocker", L"Texture\\LockedCloseLocker.bmp");
-	m_pPostTex = ResMgr::GetInst()->TexLoad(L"Post", L"Texture\\Post.bmp");
 	CreateCollider();
 }
 
@@ -33,18 +35,27 @@ void Locker::ExitCollision()
 	isEnter = false;
 }
 
-void Locker::Update()
+void Locker::FinalUpdate()
 {
-	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
+	if (KEY_UP(KEY_TYPE::LBUTTON) && isEnter && isLocked)
 	{
-		if (isLocked) return;
-		isOpen = !isOpen;
+		Item* item = KeyMgr::GetInst()->GetPickUpItem();
+		if (item != nullptr && item->GetIsType() == ITEM_TYPE::KEY)
+		{
+			isLocked = false;
+			Inventory::GetInst()->DeleteItem(item);
+		}
 	}
-	if (KEY_UP(KEY_TYPE::LBUTTON) && isEnter)
+	if (KeyMgr::GetInst()->GetCurHIghObject() == this)
 	{
-
+		if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
+		{
+			if (isLocked) return;
+			isOpen = !isOpen;
+		}
 	}
-
+	if (m_pCollider != nullptr)
+		m_pCollider->FinalUpdate(false);
 }
 
 void Locker::Render(HDC _dc)
@@ -102,22 +113,6 @@ void Locker::Render(HDC _dc)
 		, vPos.y
 		, Width, Height, m_pTex->GetDC()
 		, 0, 0, Width, Height, RGB(255, 0, 255));*/
-	if (isPost)
-	{
-		if (isOpen)
-		{
-			x -= 13 * multiplier;
-			int postWidth = m_pPostTex->GetWidth();
-			int postHeight = m_pPostTex->GetHeight();
-			Vec2 postScale = Vec2(postWidth * multiplier, postHeight * multiplier) * vCamScale;
-			Vec2 postPos = Vec2(vRenderPos.x - postScale.x * 0.5f, vRenderPos.y - postScale.y  * 0.5f) ;
-			TransparentBlt(_dc
-				, postPos.x
-				, postPos.y
-				, postScale.x, postScale.y, m_pPostTex->GetDC()
-				, 0, 0, postWidth, postHeight, RGB(255, 0, 255));
-		}
-	}
 	Component_Render(_dc);
 	if (isEnter)
 		TextOut(_dc, vRenderPos.x, vRenderPos.y, name.c_str(), name.size());

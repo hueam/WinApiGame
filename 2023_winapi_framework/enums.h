@@ -23,17 +23,27 @@ enum class KEY_TYPE
 enum class ITEM_TYPE
 {
 	TEST,
-	ONE,
+	KEY,
+	WATER,
+	POT,
 	END
 };
-
+enum class RENDER_ORDER
+{
+	ONE,
+	TWO,
+	THREE,
+	END
+};
 enum class UI_RENDER_ORDER
 {
+	BACKGROUND,
 	INVENTORY,
 	SLOT,
 	ITEM,
+	POPUP,
 	BUTTON,
-	END=4
+	END = 6
 };
 
 enum class GAME_SCENE_TYPE

@@ -8,10 +8,11 @@
 UINT Collider::m_sNextID = 0;
 Collider::Collider()
 	: m_pOwner(nullptr)
-	, m_vScale(Vec2(100.f,100.f))
+	, m_vScale(Vec2(100.f, 100.f))
 	, m_ID(m_sNextID++)
 	, m_check(0)
 	, m_vFinalPos{}
+	, isEnable(true)
 {
 	//Collider a, b;
 	//a = b;
@@ -24,6 +25,7 @@ Collider::Collider(const Collider& _origin)
 	, m_ID(m_sNextID++)
 	, m_check(0)
 	, m_vFinalPos{}
+	, isEnable(_origin.isEnable)
 {
 }
 
@@ -55,7 +57,7 @@ void Collider::Render(HDC _dc, bool isUI)
 	vResolution.x = vResolution.x / 2;
 	vResolution.y = vResolution.y / 2;
 	vRenderPos = vRenderPos + (vRenderPos - vResolution) * vMinusCamScale;
-	if(isUI)
+	if (isUI)
 		RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
 	else
 		RECT_RENDER(vRenderPos.x, vRenderPos.y, vRenderScale.x, vRenderScale.y, _dc);
@@ -63,7 +65,7 @@ void Collider::Render(HDC _dc, bool isUI)
 
 void Collider::EnterCollision()
 {
- 	++m_check;
+	++m_check;
 	m_pOwner->EnterCollision();
 }
 

@@ -7,6 +7,7 @@ struct tKeyInfo
 	bool	  IsPrevCheck; // 이전에 눌렸냐
 };
 
+class Item;
 class Object;
 class KeyMgr // InputMgr
 {
@@ -22,8 +23,9 @@ private:
 		VK_RETURN, VK_TAB, VK_ESCAPE, VK_LBUTTON, VK_RBUTTON };
 
 	POINT m_ptMouse;
-
-
+	bool isEnterCollision = false;
+	Object* m_pHighOrdering;
+	Item* m_pPickItem;
 public:
 	void Init();
 	void Update();
@@ -35,6 +37,26 @@ public:
 	const POINT& GetMousePos() const 
 	{
 		return m_ptMouse;
+	}
+	const void SetIsCollision(const bool value)
+	{
+		isEnterCollision = value;
+	}
+	const void SetHightObject(Object* value)
+	{
+		m_pHighOrdering = value;
+	}
+	const Object* GetCurHIghObject()
+	{
+		return m_pHighOrdering;
+	}
+	const void SetPickUpItem(Item* value)
+	{
+		m_pPickItem = value;
+	}
+	Item* GetPickUpItem()
+	{
+		return m_pPickItem;
 	}
 };
 

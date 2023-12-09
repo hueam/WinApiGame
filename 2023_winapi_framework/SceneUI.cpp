@@ -48,12 +48,12 @@ void SceneUI::Render(HDC _dc)
 	{
 		for (size_t j = 0; j < m_vecUI[i].size(); ++j)
 		{
-			if (m_vecUI[i][j]->GetIsDead()) m_vecUI[i].erase(m_vecUI[i].begin() + i);
+			if (m_vecUI[i][j]->GetIsDead()) m_vecUI[i].erase(m_vecUI[i].begin() + j);
 			else m_vecUI[i][j]->Render(_dc);
 		}
 		for (size_t j = 0; j < SceneUI::m_vecDontDestroyUI[i].size(); ++j)
 		{
-			if (SceneUI::m_vecDontDestroyUI[i][j]->GetIsDead()) SceneUI::m_vecDontDestroyUI[i].erase(SceneUI::m_vecDontDestroyUI[i].begin() + i);
+			if (SceneUI::m_vecDontDestroyUI[i][j]->GetIsDead()) SceneUI::m_vecDontDestroyUI[i].erase(SceneUI::m_vecDontDestroyUI[i].begin() + j);
 			else SceneUI::m_vecDontDestroyUI[i][j]->Render(_dc);
 		}
 	}

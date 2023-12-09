@@ -7,7 +7,7 @@ class Inventory
 	SINGLE(Inventory)
 public:
 	void SelectItem(Item* item);
-	void UseItem(int idx);
+	void DeleteItem(Item* item);
 	vector<Item*> GetItemVector()
 	{
 		return invenItems;

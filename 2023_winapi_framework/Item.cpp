@@ -4,6 +4,7 @@
 #include "Collider.h"
 #include "Texture.h"
 #include "KeyMgr.h"
+#include "CameraMgr.h"
 
 Item::Item(ITEM_TYPE type, Texture* texture)
 	:needRender(false)
@@ -33,18 +34,21 @@ void Item::Update()
 {
 	if (isEnter && KEY_DOWN(KEY_TYPE::LBUTTON))
 	{
+		KeyMgr::GetInst()->SetPickUpItem(this);
 		pickUp = true;
 	}
+}
+
+void Item::FinalUpdate()
+{
+	UIObject::FinalUpdate();
 	if (KEY_UP(KEY_TYPE::LBUTTON))
 	{
+		KeyMgr::GetInst()->SetPickUpItem(nullptr);
 		pickUp = false;
 	}
-
-	if (pickUp)
-	{
-		SetPos(Vec2(KeyMgr::GetInst()->GetMousePos()));
-	}
 }
+
 
 void Item::Render(HDC _dc)
 {

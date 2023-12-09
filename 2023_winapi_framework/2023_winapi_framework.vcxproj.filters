@@ -190,10 +190,24 @@
     <ClInclude Include="Lockers.h">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
-    <ClInclude Include="Slot.h" />
     <ClInclude Include="Window.h">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
+    <ClInclude Include="PopUpTexture.h">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClInclude>
+    <ClInclude Include="Slot.h">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterBottle.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="TrashCan.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="TrashCanPopup.h" />
+    <ClInclude Include="Key.h" />
+    <ClInclude Include="Post.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -308,9 +322,23 @@
     <ClCompile Include="Lockers.cpp">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
-    <ClCompile Include="Slot.cpp" />
     <ClCompile Include="Window.cpp">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
+    <ClCompile Include="PopUpTexture.cpp">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClCompile>
+    <ClCompile Include="Slot.cpp">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClCompile>
+    <ClCompile Include="TrashCan.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterBottle.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="TrashCanPopup.cpp" />
+    <ClCompile Include="Key.cpp" />
+    <ClCompile Include="Post.cpp" />
   </ItemGroup>
 </Project>

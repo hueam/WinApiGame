@@ -1,22 +1,24 @@
 #pragma once
 #include "Object.h"
 
-class TrashCanPopup;
+class Locker;
 class Texture;
-class TrashCan :
+class WaterBottle :
     public Object
 {
 public:
-    TrashCan();
-    ~TrashCan();
+    WaterBottle();
+    ~WaterBottle();
 public:
-    void FinalUpdate() override;
+    void Update() override;
     void Render(HDC _dc) override;
+    void SetOwner(Locker* locker) { m_pOwnerLocker = locker; }
+public:
     void EnterCollision() override;
     void ExitCollision() override;
 private:
+    Locker* m_pOwnerLocker;
     bool isEnter;
     Texture* m_pTex;
-    TrashCanPopup* m_pTrashCanPopup;
 };
 
