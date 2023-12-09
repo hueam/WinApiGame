@@ -14,6 +14,6 @@ void North_Game_Scene::Init()
 	CameraMgr::GetInst()->Init();
 	Object* pObj = new Window();
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(450.f, 400.f));
+	pObj->SetScale(Vec2(350.f, 300.f));
 	AddObject(pObj,RENDER_ORDER::ONE);
 }

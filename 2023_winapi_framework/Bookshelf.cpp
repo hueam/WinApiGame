@@ -1,47 +1,23 @@
 #include "pch.h"
-#include "Window.h"
-#include "KeyMgr.h"
+#include "Bookshelf.h"
 #include "ResMgr.h"
-#include "CameraMgr.h"
 #include "Core.h"
 #include "Texture.h"
+#include "CameraMgr.h"
 
-Window::Window()
-	: isOpen(false), isEnter(false)
+Bookshelf::Bookshelf()
 {
-	m_pOpenTex = ResMgr::GetInst()->TexLoad(L"CloseWindow", L"Texture\\window_password_opened.bmp");
-	m_pCloseTex = ResMgr::GetInst()->TexLoad(L"OpenWindow", L"Texture\\window_password.bmp");
-	CreateCollider();
+	m_pTex = ResMgr::GetInst()->TexLoad(L"Bookshelf", L"Texture\\bookshelf.bmp");
 }
 
-Window::~Window()
+Bookshelf::~Bookshelf()
 {
 }
 
-void Window::EnterCollision()
+void Bookshelf::Render(HDC _dc)
 {
-	isEnter = true;
-}
 
-void Window::ExitCollision()
-{
-	isEnter = false;
-}
-
-void Window::Update()
-{
-	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
-	{
-		isOpen = !isOpen;
-	}
-}
-
-void Window::Render(HDC _dc)
-{
-	Texture* curTex;
-	
-	if (isOpen) curTex = m_pOpenTex;
-	else curTex = m_pCloseTex;
+	Texture* curTex = m_pTex;
 
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetScale();
@@ -50,8 +26,6 @@ void Window::Render(HDC _dc)
 	Vec2 vMinusCamScale = CameraMgr::GetInst()->GetScale();
 	vMinusCamScale.x -= 1;
 	vMinusCamScale.y -= 1;
-
-	//float multiplier = vScale.x / 400;
 
 	Vec2 vRenderPos = vPos - vCamPos;
 	Vec2 vRenderScale = vScale * vCamScale;
@@ -72,8 +46,6 @@ void Window::Render(HDC _dc)
 		, y
 		, vRenderScale.x, vRenderScale.y, curTex->GetDC()
 		, 0, 0, Width, Height, RGB(255, 0, 255));
-	
+
 	Component_Render(_dc);
-	if (isEnter)
-		TextOut(_dc, vRenderPos.x, vRenderPos.y, name.c_str(), name.size());
 }
