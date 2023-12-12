@@ -7,13 +7,25 @@
 #include "CollisionMgr.h"
 #include "Window.h"
 #include "CameraMgr.h"
+#include "UnusedObj.h"
 
 void North_Game_Scene::Init()
 {
 	SceneUI* ui = GetSceneUI();
 	CameraMgr::GetInst()->Init();
-	Object* pObj = new Window();
-	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(350.f, 300.f));
+
+	Object* pObj = new Window(false);
+	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 + 210, Core::GetInst()->GetResolution().y / 2 })));
+	pObj->SetScale(Vec2(410.f, 300.f));
 	AddObject(pObj,RENDER_ORDER::ONE);
+
+	pObj = new Window(true);
+	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 400, Core::GetInst()->GetResolution().y / 2 })));
+	pObj->SetScale(Vec2(410.f, 300.f));
+	AddObject(pObj, RENDER_ORDER::ONE);
+
+	pObj = new UnusedObj(L"clock");
+	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 95, Core::GetInst()->GetResolution().y / 2 - 200 })));
+	pObj->SetScale(Vec2(100.f, 100.f));
+	AddObject(pObj, RENDER_ORDER::ONE);
 }

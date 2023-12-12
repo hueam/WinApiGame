@@ -171,8 +171,6 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
     <ClInclude Include="BaseWindow.h" />
-    <ClInclude Include="Board.h" />
-    <ClInclude Include="Bookshelf.h" />
     <ClInclude Include="ButtonUI.h" />
     <ClInclude Include="CameraMgr.h" />
     <ClInclude Include="Collider.h" />
@@ -195,6 +193,7 @@
     <ClInclude Include="South_Game_Scene.h" />
     <ClInclude Include="TrashCan.h" />
     <ClInclude Include="TrashCanPopup.h" />
+    <ClInclude Include="UnusedObj.h" />
     <ClInclude Include="WaterBottle.h" />
     <ClInclude Include="West_Game_Scene.h" />
     <ClInclude Include="Inventory.h" />
@@ -224,8 +223,6 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
-    <ClCompile Include="Board.cpp" />
-    <ClCompile Include="Bookshelf.cpp" />
     <ClCompile Include="ButtonUI.cpp" />
     <ClCompile Include="CameraMgr.cpp" />
     <ClCompile Include="Collider.cpp" />
@@ -245,6 +242,7 @@
     <ClCompile Include="South_Game_Scene.cpp" />
     <ClCompile Include="TrashCan.cpp" />
     <ClCompile Include="TrashCanPopup.cpp" />
+    <ClCompile Include="UnusedObj.cpp" />
     <ClCompile Include="WaterBottle.cpp" />
     <ClCompile Include="West_Game_Scene.cpp" />
     <ClCompile Include="Inventory.cpp" />

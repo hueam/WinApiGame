@@ -6,29 +6,23 @@
 #include "SceneUI.h"
 #include "CollisionMgr.h"
 #include "TestItem.h"
-#include "Board.h"
+#include "UnusedObj.h"
 #include "CameraMgr.h"
 
 void East_Game_Scene::Init()
 {
-	SceneUI* ui = GetSceneUI();
-	CameraMgr::GetInst()->Init();
-	Object* pObj = new TestItem();
+	Object* pObj = new UnusedObj(L"board");
+	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 250, Core::GetInst()->GetResolution().y / 2 - 40})));
+	pObj->SetScale(Vec2(560.f, 320.f));
+	AddObject(pObj, RENDER_ORDER::ONE);
+	
+	pObj = new UnusedObj(L"small_board");
+	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 + 102, Core::GetInst()->GetResolution().y / 2 - 50})));
+	pObj->SetScale(Vec2(205.f, 320.f));
+	AddObject(pObj, RENDER_ORDER::ONE);
+
+	pObj = new UnusedObj(L"teachingdesk");
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(100.f, 100.f));
-	AddObject(pObj,RENDER_ORDER::ONE);
-	pObj = new TestItem();
-	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2+100, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(100.f, 100.f));
+	pObj->SetScale(Vec2(250.f, 350.f));
 	AddObject(pObj, RENDER_ORDER::ONE);
-	pObj = new TestItem();
-	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2+100 })));
-	pObj->SetScale(Vec2(100.f, 100.f));
-	AddObject(pObj, RENDER_ORDER::ONE);
-
-	pObj = new Board();
-	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 300, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(700.f, 400.f));
-	AddObject(pObj);
-
 }

@@ -1,20 +1,37 @@
 #include "pch.h"
-#include "Bookshelf.h"
+#include "UnusedObj.h"
+#include "KeyMgr.h"
 #include "ResMgr.h"
+#include "CameraMgr.h"
 #include "Core.h"
 #include "Texture.h"
-#include "CameraMgr.h"
+#include "Collider.h"
+#include "Item.h"
+#include "Inventory.h"
 
-Bookshelf::Bookshelf()
+UnusedObj::UnusedObj(wstring name) :isEnter(false)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Bookshelf", L"Texture\\bookshelf.bmp");
+	objName = name;
+	wstring path = L"Texture\\" + name + L".bmp";
+
+	m_pTex = ResMgr::GetInst()->TexLoad(name, path);
 }
 
-Bookshelf::~Bookshelf()
+UnusedObj::~UnusedObj()
 {
 }
 
-void Bookshelf::Render(HDC _dc)
+void UnusedObj::EnterCollision()
+{
+	isEnter = true;
+}
+
+void UnusedObj::ExitCollision()
+{
+	isEnter = false;
+}
+
+void UnusedObj::Render(HDC _dc)
 {
 
 	Texture* curTex = m_pTex;
