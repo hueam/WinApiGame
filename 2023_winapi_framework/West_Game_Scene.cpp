@@ -8,9 +8,16 @@
 #include "Lockers.h"
 #include "CameraMgr.h"
 #include "TrashCan.h"
+#include "BackGround.h"
 
 void West_Game_Scene::Init()
 {
+	Object* background = new BackGround(L"Background", L"back2");
+	Vec2 gameSize = Core::GetInst()->GetGamgeScreen();
+	background->SetPos({ gameSize.x * 0.5f,gameSize.y * 0.5f });
+	background->SetScale({ gameSize.x, gameSize.y});
+	AddObject(background, RENDER_ORDER::ONE);
+
 	SceneUI* ui = GetSceneUI();
 	CameraMgr::GetInst()->Init();
 	Object pObj = Lockers(this, 100, Vec2({ Core::GetInst()->GetResolution().x / 2 - 200, Core::GetInst()->GetResolution().y - 250 }));

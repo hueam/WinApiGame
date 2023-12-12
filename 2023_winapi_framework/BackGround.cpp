@@ -1,45 +1,23 @@
 #include "pch.h"
-#include "WaterBottle.h"
+#include "BackGround.h"
 #include "ResMgr.h"
-#include "KeyMgr.h"
-#include "Inventory.h"
-#include "EventMgr.h"
 #include "Texture.h"
 #include "CameraMgr.h"
 #include "Core.h"
-#include "Locker.h"
-#include "Collider.h"
 
-WaterBottle::WaterBottle()
-	:isEnter(false)
-	,m_pOwnerLocker(nullptr)
+BackGround::BackGround(wstring key, wstring name)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Water", L"Texture\\Water.bmp");
-	CreateCollider();
+	wstring path = L"Texture\\" + name + L".bmp";
+	m_pTex = ResMgr::GetInst()->TexLoad(key, path);
 }
 
-WaterBottle::~WaterBottle()
+BackGround::~BackGround()
 {
+
 }
 
-void WaterBottle::Update()
+void BackGround::Render(HDC _dc)
 {
-	if (m_pCollider != nullptr)
-	{
-		m_pCollider->SetEnable(m_pOwnerLocker->GetIsOpen());
-	}
-
-	if (!m_pOwnerLocker->GetIsOpen()) return;
-	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter == true)
-	{
-		Inventory::GetInst()->SelectItem(new Item(ITEM_TYPE::WATER, m_pTex));
-		EventMgr::GetInst()->DeleteObject(this);
-	}
-}
-
-void WaterBottle::Render(HDC _dc)
-{
-	if (!m_pOwnerLocker->GetIsOpen()) return;
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetScale();
 	Vec2 vCamPos = CameraMgr::GetInst()->GetPos();
@@ -69,15 +47,11 @@ void WaterBottle::Render(HDC _dc)
 		, y
 		, vRenderScale.x, vRenderScale.y, m_pTex->GetDC()
 		, 0, 0, Width, Height, RGB(255, 0, 255));
+	/*TransparentBlt(_dc
+		, vPos.x
+		, vPos.y
+		, Width, Height, m_pTex->GetDC()
+		, 0, 0, Width, Height, RGB(255, 0, 255));*/
+
 	Component_Render(_dc);
-}
-
-void WaterBottle::EnterCollision()
-{
-	isEnter = true;
-}
-
-void WaterBottle::ExitCollision()
-{
-	isEnter = false;
 }

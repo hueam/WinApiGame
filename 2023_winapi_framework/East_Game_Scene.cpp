@@ -8,6 +8,7 @@
 #include "TestItem.h"
 #include "UnusedObj.h"
 #include "CameraMgr.h"
+#include "BackGround.h"
 
 void East_Game_Scene::Init()
 {
@@ -15,6 +16,12 @@ void East_Game_Scene::Init()
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 + 100, Core::GetInst()->GetResolution().y / 2 - 70 })));
 	pObj->SetScale(Vec2(195.f, 320.f));
 	AddObject(pObj, RENDER_ORDER::ONE);
+
+	Object* background = new BackGround(L"Background", L"back2");
+	Vec2 gameSize = Core::GetInst()->GetGamgeScreen();
+	background->SetPos({ gameSize.x * 0.5f,gameSize.y * 0.5f });
+	background->SetScale({ gameSize.x, gameSize.y });
+	AddObject(background, RENDER_ORDER::ONE);
 
 	pObj = new UnusedObj(L"board");
 	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 250, Core::GetInst()->GetResolution().y / 2 - 70})));

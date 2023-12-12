@@ -7,10 +7,17 @@
 #include "CollisionMgr.h"
 #include "Window.h"
 #include "CameraMgr.h"
+#include "BackGround.h"
 #include "UnusedObj.h"
 
 void North_Game_Scene::Init()
 {
+	Object* background = new BackGround(L"Background", L"back2");
+	Vec2 gameSize = Core::GetInst()->GetGamgeScreen();
+	background->SetPos({ gameSize.x * 0.5f,gameSize.y * 0.5f });
+	background->SetScale({ gameSize.x, gameSize.y });
+	AddObject(background, RENDER_ORDER::ONE);
+
 	SceneUI* ui = GetSceneUI();
 	CameraMgr::GetInst()->Init();
 

@@ -14,7 +14,8 @@ TrashCan::TrashCan()
 	:isEnter(false)
 {
 	m_pTex = ResMgr::GetInst()->TexLoad(L"TrashCan", L"Texture\\trashcan.bmp");
-	m_pTrashCanPopup = new TrashCanPopup(Core::GetInst()->GetGamgeScreenCenter(),Vec2(700, 700), L"TrashcanPopup", L"trashcan_zoom_nocover");
+	Vec2 screenScale = Core::GetInst()->GetGamgeScreen();
+	m_pTrashCanPopup = new TrashCanPopup( screenScale * 0.5f ,Vec2(700, 700), L"TrashcanPopup", L"trashcan_zoom_nocover");
 	SceneMgr::GetInst()->GetCurScene()->GetSceneUI()->AddDontDestroyUI(m_pTrashCanPopup, UI_RENDER_ORDER::POPUP);
 	CreateCollider();
 }

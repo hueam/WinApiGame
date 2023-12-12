@@ -32,9 +32,9 @@ public:
 	const HWND& GetHwnd() const { return m_hWnd; }
 	const POINT& GetResolution() const 
 	{ return m_ptResolution; }
-	const POINT& GetGamgeScreenCenter() const
+	const POINT& GetGamgeScreen() const
 	{
-		return { (m_ptResolution.x / 2) - 100, m_ptResolution.y/2 };
+		return { m_ptResolution.x - 200, m_ptResolution.y };
 	}
 	const HDC& GetMainDC() const
 	{

@@ -1,45 +1,35 @@
 #include "pch.h"
-#include "WaterBottle.h"
-#include "ResMgr.h"
-#include "KeyMgr.h"
-#include "Inventory.h"
-#include "EventMgr.h"
-#include "Texture.h"
+#include "FlowerPot.h"
 #include "CameraMgr.h"
+#include "ResMgr.h"
 #include "Core.h"
-#include "Locker.h"
-#include "Collider.h"
+#include "Texture.h"
+#include "Inventory.h"
+#include "KeyMgr.h"
+#include "EventMgr.h"
 
-WaterBottle::WaterBottle()
-	:isEnter(false)
-	,m_pOwnerLocker(nullptr)
+FlowerPot::FlowerPot() :isEnter(false)
 {
-	m_pTex = ResMgr::GetInst()->TexLoad(L"Water", L"Texture\\Water.bmp");
+	m_pTex = ResMgr::GetInst()->TexLoad(L"pot", L"Texture\\plants.bmp");
+
 	CreateCollider();
 }
 
-WaterBottle::~WaterBottle()
+FlowerPot::~FlowerPot()
 {
 }
 
-void WaterBottle::Update()
+void FlowerPot::Update()
 {
-	if (m_pCollider != nullptr)
+	if (isEnter && KEY_DOWN(KEY_TYPE::LBUTTON))
 	{
-		m_pCollider->SetEnable(m_pOwnerLocker->GetIsOpen());
-	}
-
-	if (!m_pOwnerLocker->GetIsOpen()) return;
-	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter == true)
-	{
-		Inventory::GetInst()->SelectItem(new Item(ITEM_TYPE::WATER, m_pTex));
+		Inventory::GetInst()->SelectItem(new Item(ITEM_TYPE::POT, m_pTex));
 		EventMgr::GetInst()->DeleteObject(this);
 	}
 }
 
-void WaterBottle::Render(HDC _dc)
+void FlowerPot::Render(HDC _dc)
 {
-	if (!m_pOwnerLocker->GetIsOpen()) return;
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetScale();
 	Vec2 vCamPos = CameraMgr::GetInst()->GetPos();
@@ -61,23 +51,21 @@ void WaterBottle::Render(HDC _dc)
 
 	int x = (int)(vRenderPos.x - vRenderScale.x / 2);
 	int y = (int)(vRenderPos.y - vRenderScale.y / 2);
-	//x *= (int)(vCamScale.x /2);
-	//y *= (int)(vCamScale.x /2);  
-	//ELLIPSE_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
 	TransparentBlt(_dc
 		, x
 		, y
 		, vRenderScale.x, vRenderScale.y, m_pTex->GetDC()
 		, 0, 0, Width, Height, RGB(255, 0, 255));
+
 	Component_Render(_dc);
 }
 
-void WaterBottle::EnterCollision()
+void FlowerPot::EnterCollision()
 {
 	isEnter = true;
 }
 
-void WaterBottle::ExitCollision()
+void FlowerPot::ExitCollision()
 {
 	isEnter = false;
 }
