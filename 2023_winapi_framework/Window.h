@@ -7,7 +7,7 @@ class Window :
 {
 	const wstring name = L"Ã¢¹®";
 public:
-	Window();
+	Window(bool is);
 	~Window();
 public:
 	void EnterCollision() override;
@@ -19,8 +19,10 @@ public:
 private:
 	bool isEnter;
 	bool isOpen;
+	bool isLight;
 
 	Texture* m_pCloseTex;
-	Texture* m_pOpenTex;
+	Texture* m_pOpenTex;	
+	Texture* m_pCloseLightTex;	
 };
 

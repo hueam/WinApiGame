@@ -208,11 +208,8 @@
     <ClInclude Include="TrashCanPopup.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="Post.h" />
-    <ClInclude Include="Board.h" />
-    <ClInclude Include="Bookshelf.h" />
     <ClInclude Include="Door.h" />
-    <ClInclude Include="BackGround.h" />
-    <ClInclude Include="FlowerPot.h" />
+    <ClInclude Include="UnusedObj.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -345,10 +342,7 @@
     <ClCompile Include="TrashCanPopup.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="Post.cpp" />
-    <ClCompile Include="Board.cpp" />
-    <ClCompile Include="Bookshelf.cpp" />
     <ClCompile Include="Door.cpp" />
-    <ClCompile Include="BackGround.cpp" />
-    <ClCompile Include="FlowerPot.cpp" />
+    <ClCompile Include="UnusedObj.cpp" />
   </ItemGroup>
 </Project>

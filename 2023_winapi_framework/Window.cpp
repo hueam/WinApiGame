@@ -6,11 +6,13 @@
 #include "Core.h"
 #include "Texture.h"
 
-Window::Window()
-	: isOpen(false), isEnter(false)
+Window::Window(bool is)
+	: isOpen(false), isEnter(false), isLight(false)
 {
+	isLight = is;
 	m_pOpenTex = ResMgr::GetInst()->TexLoad(L"CloseWindow", L"Texture\\window_password_opened.bmp");
 	m_pCloseTex = ResMgr::GetInst()->TexLoad(L"OpenWindow", L"Texture\\window_password.bmp");
+	m_pCloseLightTex = ResMgr::GetInst()->TexLoad(L"LightWindow", L"Texture\\lighted_window.bmp");
 	CreateCollider();
 }
 
@@ -32,16 +34,18 @@ void Window::Update()
 {
 	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
 	{
+		if (isLight) return;
 		isOpen = !isOpen;
 	}
 }
 
 void Window::Render(HDC _dc)
 {
-	Texture* curTex;
+	Texture* curTex = nullptr;
 	
-	if (isOpen) curTex = m_pOpenTex;
-	else curTex = m_pCloseTex;
+	if (isLight) curTex = m_pCloseLightTex;
+	else if (isOpen && !isLight) curTex = m_pOpenTex;
+	else if(!isOpen && !isLight) curTex = m_pCloseTex;
 
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetScale();

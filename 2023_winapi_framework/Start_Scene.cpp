@@ -15,25 +15,12 @@
 void Start_Scene::Init()
 {
 	CameraMgr::GetInst()->Init();
-	Object* pObj = new TestItem();
-	pObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2})));
-	pObj->SetScale(Vec2(100.f,100.f));
-	AddObject(pObj, RENDER_ORDER::ONE);
-	pObj = new TestItem();
-	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 + 100, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(100.f, 100.f));
-	AddObject(pObj, RENDER_ORDER::ONE);
-	pObj = new TestItem();
-	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 - 100, Core::GetInst()->GetResolution().y / 2 })));
-	pObj->SetScale(Vec2(100.f, 100.f));
-	AddObject(pObj, RENDER_ORDER::ONE);
 
 	SceneUI* ui = GetSceneUI();
 	UIObject* pUIObj = new ButtonUI(L"Bullet");
 	pUIObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2 + 300})));
 	pUIObj->SetScale(Vec2(300.f,100.f));
 	ui->AddUI(pUIObj, UI_RENDER_ORDER::BUTTON);
-	//// 몬스터 세팅 마구마구 배치를 해봅시다.
 
 	//Vec2 vResolution = Core::GetInst()->GetResolution();
 	//Monster* pMonster = nullptr;
