@@ -1,5 +1,7 @@
 #pragma once
+#include <functional>
 class Scene;
+class Blend;
 class SceneMgr
 {
 	SINGLE(SceneMgr);
@@ -12,12 +14,19 @@ public:
 	void InitScene(const wstring& _scenename);
 	void RegisterScene(const wstring& _scenename, std::shared_ptr<Scene> _scene);
 	void ChangeScene(bool isAdd);
+	void FadeIn(std::function<void()>& func);
+	void FadeIn();
+	void FadeOut(std::function<void()>& func);
+	void FadeOut();
 public:
 	const std::shared_ptr<Scene>& GetCurScene() const
 	{
 		return m_pCurScene;
 	}
 private:
+	Blend* m_pFadeIn;
+	Blend* m_pFadeOut;
+
 	int currentScene = 0;
 	// 스마트 포인터
 	std::shared_ptr<Scene> m_pCurScene; // 현재 씬

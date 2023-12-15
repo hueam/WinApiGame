@@ -9,6 +9,8 @@
 #include "UIObject.h"
 #include "CameraMgr.h"
 #include "Core.h"
+#include "TextMgr.h"
+
 void CollisionMgr::Update()
 {
 	CollisionGroupUpdate();
@@ -47,7 +49,9 @@ void CollisionMgr::CollisionGroupUpdate()
 				iter = m_mapColInfo.find(colID.ID);
 			}
 			// 충돌하네?
-			bool collision = IsCollision(pLeftCol, false);
+			bool collision = false;
+			if(!TextMgr::GetInst()->GetEnable())
+				collision = IsCollision(pLeftCol, false);
 			isEnterCollider |= collision;
 			if (collision)
 			{

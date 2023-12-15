@@ -21,7 +21,7 @@ PopUpTexture::~PopUpTexture()
 
 void PopUpTexture::Update()
 {
-	if (isEnter == false && KEY_DOWN(KEY_TYPE::LBUTTON))
+	if (KEY_DOWN(KEY_TYPE::LBUTTON)&& !isEnter)
 	{
 		Close();
 	}

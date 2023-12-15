@@ -30,6 +30,7 @@ enum class ITEM_TYPE
 };
 enum class RENDER_ORDER
 {
+	BACKGROUND,
 	ONE,
 	TWO,
 	THREE,
@@ -37,7 +38,6 @@ enum class RENDER_ORDER
 };
 enum class UI_RENDER_ORDER
 {
-	BACKGROUND,
 	INVENTORY,
 	SLOT,
 	ITEM,

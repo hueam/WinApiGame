@@ -30,9 +30,9 @@ void WaterBottle::Update()
 	}
 
 	if (!m_pOwnerLocker->GetIsOpen()) return;
-	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter == true)
+	if (isEnter && KEY_DOWN(KEY_TYPE::LBUTTON))
 	{
-		Inventory::GetInst()->SelectItem(new Item(ITEM_TYPE::WATER, m_pTex));
+		Inventory::GetInst()->SelectItem(new Item(ITEM_TYPE::WATER, m_pTex,L"¹°"));
 		EventMgr::GetInst()->DeleteObject(this);
 	}
 }

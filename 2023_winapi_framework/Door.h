@@ -2,8 +2,9 @@
 #include "Object.h"
 
 class Texture;
+class DoorLock;
 class Door :
-    public Object
+	public Object
 {
 	const wstring name = L"¹®";
 public:
@@ -15,11 +16,14 @@ public:
 	void Update() override;
 	void Render(HDC _dc) override;
 public:
-	void SetIsOpened(bool value) { isOpen = value; }
+	void SetDoorLock(DoorLock* lock) { m_pDoorLock = lock; }
+private:
+	void End();
 private:
 	bool isEnter;
 	bool isOpen;
 
+	DoorLock* m_pDoorLock;
 	Texture* m_pCloseTex;
 	Texture* m_pOpenTex;
 };

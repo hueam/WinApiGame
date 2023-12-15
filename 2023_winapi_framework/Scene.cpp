@@ -3,6 +3,8 @@
 #include "Object.h"
 #include "UIObject.h"
 #include "SceneUI.h"
+#include "Blend.h"
+#include <functional>
 Scene::Scene()
 	:ui(nullptr)
 {
@@ -57,7 +59,6 @@ void Scene::Render(HDC _dc)
 		}
 	}
 	ui->Render(_dc);
-
 }
 
 void Scene::Release()

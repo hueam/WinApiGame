@@ -5,6 +5,7 @@
 #include "Inventory.h"
 #include "Item.h"
 #include "TrashCanPopup.h"
+#include "TextMgr.h"
 
 Key::Key(wstring key, wstring textureName, TrashCanPopup* newOwner) : UIObject(key, textureName)
 	, isEnter(false)
@@ -20,10 +21,11 @@ Key::~Key()
 void Key::Update()
 {
 	SetScale(owner->GetScale());
-	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
+	if (isEnter && KEY_DOWN(KEY_TYPE::LBUTTON))
 	{
-		Inventory::GetInst()->SelectItem(new Item(ITEM_TYPE::KEY,m_pTex));
+		Inventory::GetInst()->SelectItem(new Item(ITEM_TYPE::KEY,m_pTex,L"열쇠"));
 		EventMgr::GetInst()->DeleteObject(this);
+		TextMgr::GetInst()->SetText(L"어..? 열쇠가 왜 여깄지..?");
 	}
 }
 

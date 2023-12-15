@@ -8,7 +8,9 @@
 #include "CollisionMgr.h"
 #include "EventMgr.h"
 #include "Inventory.h"
-bool Core::Init(HWND _hWnd, POINT _ptResolution)
+#include "TextMgr.h"
+
+bool Core::Init(HWND _hWnd, POINT& _ptResolution)
 {
 	// === 변수 초기화 === 
 	m_hWnd = _hWnd;
@@ -18,7 +20,7 @@ bool Core::Init(HWND _hWnd, POINT _ptResolution)
 
 
 	// 더블버퍼링
-	m_hDC = GetDC(m_hWnd);	
+	m_hDC = GetDC(m_hWnd);
 	// 1. 생성
 	m_hbackbit = CreateCompatibleBitmap(m_hDC, m_ptResolution.x, m_ptResolution.y);
 	m_hbackDC = CreateCompatibleDC(m_hDC);
@@ -26,13 +28,14 @@ bool Core::Init(HWND _hWnd, POINT _ptResolution)
 	// 2. 연결
 	SelectObject(m_hbackDC, m_hbackbit);
 
-//	m_obj.SetPos(Vec2({ m_ptResolution.x / 2, m_ptResolution.y / 2 }));
-////	m_obj.m_ptPos = ;
-//	m_obj.SetScale(Vec2(150, 150));
+	//	m_obj.SetPos(Vec2({ m_ptResolution.x / 2, m_ptResolution.y / 2 }));
+	////	m_obj.m_ptPos = ;
+	//	m_obj.SetScale(Vec2(150, 150));
 
 	CreateGDI();
 	// ==== Manager Init ====
 
+	TextMgr::GetInst()->Init();
 	PathMgr::GetInst()->Init();
 	TimeMgr::GetInst()->Init();
 	KeyMgr::GetInst()->Init();
@@ -64,25 +67,26 @@ void Core::Update()
 	// === Manager Update === 
 	TimeMgr::GetInst()->Update();
 	KeyMgr::GetInst()->Update();
+	TextMgr::GetInst()->Update();
 	SceneMgr::GetInst()->Update();
 	CollisionMgr::GetInst()->Update();
-//	Vec2 vPos = m_obj.GetPos();
-//
-////	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-////	if(KeyMgr::GetInst()->GetKey(KEY_TYPE::LEFT) == KEY_STATE::UP)
-//	if(KEY_UP(KEY_TYPE::LEFT))
-//	{
-////		m_obj.m_ptPos.x -= 1;
-//		vPos.x -= 100.f;// *fDT;
-//	}
-//
-////	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-//	if(KEY_DOWN(KEY_TYPE::RIGHT))
-//	{
-////		m_obj.m_ptPos.x += 1;
-//		vPos.x += 100.f * fDT;
-//	}
-//	m_obj.SetPos(vPos);
+	//	Vec2 vPos = m_obj.GetPos();
+	//
+	////	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+	////	if(KeyMgr::GetInst()->GetKey(KEY_TYPE::LEFT) == KEY_STATE::UP)
+	//	if(KEY_UP(KEY_TYPE::LEFT))
+	//	{
+	////		m_obj.m_ptPos.x -= 1;
+	//		vPos.x -= 100.f;// *fDT;
+	//	}
+	//
+	////	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+	//	if(KEY_DOWN(KEY_TYPE::RIGHT))
+	//	{
+	////		m_obj.m_ptPos.x += 1;
+	//		vPos.x += 100.f * fDT;
+	//	}
+	//	m_obj.SetPos(vPos);
 }
 
 void Core::Render()
@@ -91,7 +95,9 @@ void Core::Render()
 	//Rectangle(m_hbackDC, -1,-1,m_ptResolution.x +1,m_ptResolution.y + 1);
 	PatBlt(m_hbackDC, 0, 0, m_ptResolution.x, m_ptResolution.y, WHITENESS);
 
+	SetBkMode(m_hbackDC, TRANSPARENT);
 	SceneMgr::GetInst()->Render(m_hbackDC);
+	TextMgr::GetInst()->Render(m_hbackDC);
 	/*Vec2 vPos = m_obj.GetPos();
 	Vec2 vScale = m_obj.GetScale();
 	RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, m_hbackDC);*/
@@ -103,8 +109,9 @@ void Core::Render()
 	//TextOut(m_hbackDC, 10, 10, mousebuf, wcslen(mousebuf));
 
 	// 3. 옮긴다.
-	BitBlt(m_hDC, 0,0, m_ptResolution.x, m_ptResolution.y, 
-		m_hbackDC, 0,0, SRCCOPY);
+	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y,
+		m_hbackDC, 0, 0, SRCCOPY);
+
 	EventMgr::GetInst()->Update();
 
 

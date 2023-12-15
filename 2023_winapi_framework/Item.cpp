@@ -6,11 +6,12 @@
 #include "KeyMgr.h"
 #include "CameraMgr.h"
 
-Item::Item(ITEM_TYPE type, Texture* texture)
+Item::Item(ITEM_TYPE type, Texture* texture, wstring itemName)
 	:needRender(false)
 	,isEnter(false)
 	,pickUp(false)
 {
+	name = itemName;
 	m_itmeType = type;
 	m_pTex = texture;
 	CreateCollider();
@@ -32,7 +33,7 @@ void Item::ExitCollision()
 
 void Item::Update()
 {
-	if (isEnter && KEY_DOWN(KEY_TYPE::LBUTTON))
+	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
 	{
 		KeyMgr::GetInst()->SetPickUpItem(this);
 		pickUp = true;
@@ -67,7 +68,7 @@ void Item::Render(HDC _dc)
 
 	if (isEnter)
 	{
-		TextOut(_dc,m_vPos.x, m_vPos.y,L"HI",3);
+		TextOut(_dc,m_vPos.x, m_vPos.y,name.c_str(), name.length());
 	}
 
 }

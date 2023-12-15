@@ -8,6 +8,7 @@
 #include "Collider.h"
 #include "Item.h"
 #include "Inventory.h"
+#include "TextMgr.h"
 
 Locker::Locker()
 	:isOpen(false)
@@ -37,7 +38,7 @@ void Locker::ExitCollision()
 
 void Locker::FinalUpdate()
 {
-	if (KEY_UP(KEY_TYPE::LBUTTON) && isEnter && isLocked)
+	if (isEnter && KEY_UP(KEY_TYPE::LBUTTON) && isLocked)
 	{
 		Item* item = KeyMgr::GetInst()->GetPickUpItem();
 		if (item != nullptr && item->GetIsType() == ITEM_TYPE::KEY)
@@ -45,13 +46,21 @@ void Locker::FinalUpdate()
 			isLocked = false;
 			Inventory::GetInst()->DeleteItem(item);
 		}
+		ResMgr::GetInst()->Play(L"locker_open");
 	}
-	if (KeyMgr::GetInst()->GetCurHIghObject() == this)
+	if (isEnter && KeyMgr::GetInst()->GetCurHIghObject() == this)
 	{
-		if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
+		if (KEY_DOWN(KEY_TYPE::LBUTTON))
 		{
-			if (isLocked) return;
+			if (isLocked)
+			{
+				TextMgr::GetInst()->SetText(L"잠겨있네..?");
+				TextMgr::GetInst()->SetText(L"이거 내 사물함인데..?");
+				TextMgr::GetInst()->SetText(L"열쇠가 어딨을까");
+				return;
+			}
 			isOpen = !isOpen;
+			ResMgr::GetInst()->Play(L"locker_close");
 		}
 	}
 	if (m_pCollider != nullptr)
@@ -102,7 +111,7 @@ void Locker::Render(HDC _dc)
 
 	//x *= (int)(vCamScale.x /2);
 	//y *= (int)(vCamScale.x /2);  
-	//ELLIPSE_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
+		//ELLIPSE_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
 	TransparentBlt(_dc
 		, x
 		, y

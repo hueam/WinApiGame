@@ -25,14 +25,14 @@ class Core
 {
 	SINGLE(Core);
 public:
-	bool Init(HWND _hwnd, POINT _ptResolution);
+	bool Init(HWND _hwnd, POINT& _ptResolution);
 	void GameLoop();
 	void Release();
 public:
 	const HWND& GetHwnd() const { return m_hWnd; }
 	const POINT& GetResolution() const 
 	{ return m_ptResolution; }
-	const POINT& GetGamgeScreen() const
+	const POINT GetGamgeScreen() const
 	{
 		return { m_ptResolution.x - 200, m_ptResolution.y };
 	}

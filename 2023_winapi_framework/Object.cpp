@@ -54,7 +54,7 @@ void Object::Render(HDC _dc)
 {
 	/*Vec2 vPos = m_obj.GetPos();
 	Vec2 vScale = m_obj.GetScale();*/
-	RECT_RENDER(m_vPos.x, m_vPos.y, m_vScale.x, m_vScale.y, _dc);
+	//RECT_RENDER(m_vPos.x, m_vPos.y, m_vScale.x, m_vScale.y, _dc);
 	Component_Render(_dc);
 }
 
@@ -73,10 +73,10 @@ void Object::StayCollision()
 
 void Object::Component_Render(HDC _dc)
 {
-	if (nullptr != m_pCollider)
-		m_pCollider->Render(_dc, false);
-	if (nullptr != m_pAnimator)
-		m_pAnimator->Render(_dc);
+	//if (nullptr != m_pCollider)
+	//	m_pCollider->Render(_dc, false);
+	//if (nullptr != m_pAnimator)
+	//	m_pAnimator->Render(_dc);
 
 }
 

@@ -20,6 +20,8 @@ public:
 		m_vecDontDestroyUI[(int)type].push_back(_pUI);
 	}
 	const vector<UIObject*> GetVecUI(UI_RENDER_ORDER type) { return m_vecUI[(int)type]; }
+
+	const static void ClearDontDestroyUI();
 public:
 	static vector<UIObject*> m_vecDontDestroyUI[(int)UI_RENDER_ORDER::END];
 private:

@@ -10,14 +10,19 @@ void CameraMgr::Init()
 		m_vCamPos = Vec2(0, 0);
 		m_vCamScale = Vec2(1, 1);
 		m_pFocusingObj = nullptr;
+		isZoom = false;
 	}
-	isZoom = false;
+}
+
+void CameraMgr::SetScale(const int scale)
+{
+	m_vCamScale = Vec2(scale, scale);
+	isZoom = !(scale <= 1);
 }
 
 void CameraMgr::SetPos(const Vec2 pos)
 {
 	m_vCamPos = Vec2(pos.x - Core::GetInst()->GetResolution().x / 2, pos.y - Core::GetInst()->GetResolution().y / 2);
-	isZoom = true;
 	//m_vCamPos = pos;
 }
 
