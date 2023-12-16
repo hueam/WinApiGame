@@ -12,6 +12,7 @@ public:
     virtual void EnterCollision() override;
     virtual void ExitCollision() override;
 private:
+    Vec2 curScale;
     bool m_bisEnter;
     bool m_bisMouseDown;
 };

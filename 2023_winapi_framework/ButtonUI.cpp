@@ -11,7 +11,7 @@ ButtonUI::ButtonUI()
 }
 
 ButtonUI::ButtonUI(wstring textureName) 
-	: UIObject(L"Bullet", textureName)
+	: UIObject(L"StartBtn", textureName)
 	, m_bisEnter(false)
 	,m_bisMouseDown(false)
 {
@@ -41,10 +41,14 @@ void ButtonUI::Update()
 void ButtonUI::EnterCollision()
 {
 	m_bisEnter = true;
+	curScale = GetScale(); // 현재 스케일
+	SetScale({ curScale.x + 60,curScale.y + 20 });
 }
 
 void ButtonUI::ExitCollision()
 {
 	m_bisEnter = false;
 	m_bisMouseDown = false;
+	curScale = GetScale();
+	SetScale({ curScale.x - 60,curScale.y - 20 });
 }

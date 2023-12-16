@@ -49,8 +49,8 @@ void South_Game_Scene::Init()
 	AddObject(textObj, RENDER_ORDER::TWO);
 
 	pObj = new FlowerPot();
-	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 + 270, Core::GetInst()->GetResolution().y / 2 +18 })));
-	pObj->SetScale(Vec2(50.f, 100.f));
+	pObj->SetPos((Vec2({ Core::GetInst()->GetResolution().x / 2 + 270, Core::GetInst()->GetResolution().y / 2 +20 })));
+	pObj->SetScale(Vec2(100.f, 100.f));
 	AddObject(pObj, RENDER_ORDER::TWO);
 
 
