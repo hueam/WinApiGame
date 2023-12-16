@@ -12,14 +12,22 @@
 #include "SceneUI.h"
 #include "Collider.h"
 #include "CameraMgr.h"
+#include "BackGround.h"
 void Start_Scene::Init()
 {
 	CameraMgr::GetInst()->Init();
 
+
+	Object* background = new BackGround(L"StartBack", L"game_title");
+	Vec2 gameSize = Core::GetInst()->GetResolution();
+	background->SetPos({ gameSize.x * 0.5f,gameSize.y * 0.5f });
+	background->SetScale({ gameSize.x, gameSize.y });
+	AddObject(background, RENDER_ORDER::ONE);
+
 	SceneUI* ui = GetSceneUI();
-	UIObject* pUIObj = new ButtonUI(L"Bullet");
-	pUIObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2 + 300})));
-	pUIObj->SetScale(Vec2(300.f,100.f));
+	UIObject* pUIObj = new ButtonUI(L"start_btn");
+	pUIObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2 - 250, Core::GetInst()->GetResolution().y / 2 + 200})));
+	pUIObj->SetScale(Vec2(750.f,250.f));// 3:1
 	ui->AddUI(pUIObj, UI_RENDER_ORDER::BUTTON);
 
 	//Vec2 vResolution = Core::GetInst()->GetResolution();
