@@ -71,3 +71,16 @@ void SceneUI::Release()
 		m_vecUI[i].clear(); 
 	}
 }
+
+const void SceneUI::ClearDontDestroyUI()
+{
+	for (size_t i = 0; i < (int)UI_RENDER_ORDER::END; i++)
+	{
+		for (size_t j = 0; j < m_vecDontDestroyUI[i].size(); ++j)
+		{
+			delete m_vecDontDestroyUI[i][j];
+			m_vecDontDestroyUI[i].erase(m_vecDontDestroyUI[i].begin() + j);
+		}
+		m_vecDontDestroyUI[i].clear();
+	}
+}

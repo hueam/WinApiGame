@@ -8,17 +8,22 @@
 #include "Lockers.h"
 #include "CameraMgr.h"
 #include "TrashCan.h"
-#include "BackGround.h"
+#include "TextMgr.h"
+#include "UnusedObj.h"
+#include "SceneMgr.h"
 
 void West_Game_Scene::Init()
 {
-	Object* background = new BackGround(L"Background", L"back2");
+	//SceneMgr::GetInst()->InitScene(L"East_Game_Scene");
+	//SceneMgr::GetInst()->InitScene(L"North_Game_Scene");
+	//SceneMgr::GetInst()->InitScene(L"South_Game_Scene");
+
+	Object* background = new UnusedObj(L"back2");
 	Vec2 gameSize = Core::GetInst()->GetGamgeScreen();
 	background->SetPos({ gameSize.x * 0.5f,gameSize.y * 0.5f });
 	background->SetScale({ gameSize.x, gameSize.y});
 	AddObject(background, RENDER_ORDER::ONE);
 
-	SceneUI* ui = GetSceneUI();
 	CameraMgr::GetInst()->Init();
 	Object pObj = Lockers(this, 100, Vec2({ Core::GetInst()->GetResolution().x / 2 - 200, Core::GetInst()->GetResolution().y - 250 }));
 	Object* tc = new TrashCan();
@@ -26,6 +31,10 @@ void West_Game_Scene::Init()
 	tc->SetScale(Vec2({ 150,200 }));
 	AddObject(tc,RENDER_ORDER::ONE);
 
+	TextMgr::GetInst()->SetText(L"여기가 어디지?");
+	TextMgr::GetInst()->SetText(L"학교..?");
+	TextMgr::GetInst()->SetText(L"아무도 깨워주지 않았네...");
+	TextMgr::GetInst()->SetText(L"일단 돌아가자...");
 
 
 	InventoryUI* invenUI = new InventoryUI(L"asd");

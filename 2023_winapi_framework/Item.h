@@ -5,7 +5,7 @@ class Item
 	: public UIObject
 {
 public:
-	Item(ITEM_TYPE type, Texture* texture);
+	Item(ITEM_TYPE type, Texture* texture,wstring itemName);
 	~Item();
 public :
 	void EnterCollision() override;
@@ -22,6 +22,7 @@ protected:
 	bool isEnter;
 	bool pickUp;
 	bool needRender;
+	wstring name;
 	ITEM_TYPE m_itmeType;
 };
 

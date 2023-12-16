@@ -154,9 +154,6 @@
     <ClInclude Include="Item.h">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
-    <ClInclude Include="TestItem.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
     <ClInclude Include="UIObject.h">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClInclude>
@@ -210,6 +207,13 @@
     <ClInclude Include="Post.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="UnusedObj.h" />
+    <ClInclude Include="FlowerPot.h" />
+    <ClInclude Include="DoorLock.h" />
+    <ClInclude Include="NumPad.h" />
+    <ClInclude Include="Blend.h" />
+    <ClInclude Include="End_Scene.h" />
+    <ClInclude Include="TextMgr.h" />
+    <ClInclude Include="TouchTextObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -288,9 +292,6 @@
     <ClCompile Include="Item.cpp">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
-    <ClCompile Include="TestItem.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
     <ClCompile Include="UIObject.cpp">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClCompile>
@@ -344,5 +345,12 @@
     <ClCompile Include="Post.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="UnusedObj.cpp" />
+    <ClCompile Include="FlowerPot.cpp" />
+    <ClCompile Include="DoorLock.cpp" />
+    <ClCompile Include="NumPad.cpp" />
+    <ClCompile Include="Blend.cpp" />
+    <ClCompile Include="End_Scene.cpp" />
+    <ClCompile Include="TextMgr.cpp" />
+    <ClCompile Include="TouchTextObject.cpp" />
   </ItemGroup>
 </Project>

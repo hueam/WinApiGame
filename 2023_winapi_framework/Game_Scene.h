@@ -7,5 +7,8 @@ class Game_Scene :
     virtual void Update() final;
     virtual void Render(HDC _dc) final;
     virtual void Release() final;
+public:
+    void ChangeBeforeScene();
+    void ChangeAftetScene();
 };
 

@@ -2,6 +2,7 @@
 //#include "Object.h"
 class Object;
 class SceneUI;
+class Blend;
 class Scene
 {
 public:

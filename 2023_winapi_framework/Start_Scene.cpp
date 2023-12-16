@@ -2,7 +2,6 @@
 #include "Start_Scene.h"
 #include "Object.h"
 #include "Item.h"
-#include "TestItem.h"
 #include "Core.h"
 #include "KeyMgr.h"
 #include "CollisionMgr.h"
@@ -12,22 +11,17 @@
 #include "SceneUI.h"
 #include "Collider.h"
 #include "CameraMgr.h"
-#include "BackGround.h"
+#include "TextMgr.h"
+#include "SceneMgr.h"
+
 void Start_Scene::Init()
 {
 	CameraMgr::GetInst()->Init();
 
-
-	Object* background = new BackGround(L"StartBack", L"game_title");
-	Vec2 gameSize = Core::GetInst()->GetResolution();
-	background->SetPos({ gameSize.x * 0.5f,gameSize.y * 0.5f });
-	background->SetScale({ gameSize.x, gameSize.y });
-	AddObject(background, RENDER_ORDER::ONE);
-
 	SceneUI* ui = GetSceneUI();
-	UIObject* pUIObj = new ButtonUI(L"start_btn");
-	pUIObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2 - 250, Core::GetInst()->GetResolution().y / 2 + 200})));
-	pUIObj->SetScale(Vec2(750.f,250.f));// 3:1
+	UIObject* pUIObj = new ButtonUI(L"Bullet");
+	pUIObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2 + 300})));
+	pUIObj->SetScale(Vec2(300.f,100.f));
 	ui->AddUI(pUIObj, UI_RENDER_ORDER::BUTTON);
 
 	//Vec2 vResolution = Core::GetInst()->GetResolution();
@@ -50,8 +44,16 @@ void Start_Scene::Init()
 	//	AddObject(pMonster, OBJECT_GROUP::MONSTER);
 	//}
 	// 사운드 세팅
-	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
- 	ResMgr::GetInst()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
+	ResMgr::GetInst()->LoadSound(L"BGM", L"Sound\\background.wav", true);
+	ResMgr::GetInst()->LoadSound(L"Click", L"Sound\\click.wav", false);
+ 	ResMgr::GetInst()->LoadSound(L"NumPad", L"Sound\\beep.wav", false);
+ 	ResMgr::GetInst()->LoadSound(L"door_close", L"Sound\\door_close.wav", false);
+ 	ResMgr::GetInst()->LoadSound(L"door_open", L"Sound\\door_open.wav", false);
+ 	ResMgr::GetInst()->LoadSound(L"locker_open", L"Sound\\locker_close.wav", false);
+ 	ResMgr::GetInst()->LoadSound(L"locker_close", L"Sound\\locker_open.wav", false);
+ 	ResMgr::GetInst()->LoadSound(L"water", L"Sound\\water.wav", false);
+ 	ResMgr::GetInst()->LoadSound(L"window", L"Sound\\window.wav", false);
+
 	ResMgr::GetInst()->Play(L"BGM");
 
 }
@@ -59,7 +61,8 @@ void Start_Scene::Init()
 void Start_Scene::Update()
 {
 	Scene::Update();
-	//if(KEY_DOWN(KEY_TYPE::ENTER))
+	//if (KEY_DOWN(KEY_TYPE::ENTER))
+	//	SceneMgr::GetInst()->LoadScene(L"West_Game_Scene");
 	//	// 씬 변경
 }
 

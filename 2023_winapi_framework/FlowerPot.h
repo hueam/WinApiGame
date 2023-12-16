@@ -14,8 +14,22 @@ public:
 public:
     void EnterCollision() override;
     void ExitCollision() override;
+public:
+    const void SetSun(const bool value)
+    {
+        sun = value;
+    }
+    const void SetWater(const bool value)
+    {
+        water = value;
+    }
+
 private:
     bool isEnter;
+    bool sun;
+    bool water;
     Texture* m_pTex;
+    Texture* m_pgGrow_One_Tex;
+    Texture* m_pgGrow_Two_Tex;
 };
 
