@@ -13,16 +13,24 @@
 #include "CameraMgr.h"
 #include "TextMgr.h"
 #include "SceneMgr.h"
+#include "UnusedObj.h"
 
 void Start_Scene::Init()
 {
 	CameraMgr::GetInst()->Init();
 
 	SceneUI* ui = GetSceneUI();
-	UIObject* pUIObj = new ButtonUI(L"Bullet");
-	pUIObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2, Core::GetInst()->GetResolution().y / 2 + 300})));
-	pUIObj->SetScale(Vec2(300.f,100.f));
+	UIObject* pUIObj = new ButtonUI(L"start_btn");
+	pUIObj->SetPos((Vec2({Core::GetInst()->GetResolution().x /2 + 300, Core::GetInst()->GetResolution().y / 2 + 200})));
+	pUIObj->SetScale(Vec2(750.f,250.f)); // 3:1
 	ui->AddUI(pUIObj, UI_RENDER_ORDER::BUTTON);
+
+	Object* background = new UnusedObj(L"game_title");
+	Vec2 gameSize = Core::GetInst()->GetResolution();
+	Vec2 winSize = Core::GetInst()->GetResolution();
+	background->SetPos({ gameSize.x * 0.5f,gameSize.y * 0.5f });
+	background->SetScale({ gameSize.x, gameSize.y });
+	AddObject(background, RENDER_ORDER::BACKGROUND);
 
 	//Vec2 vResolution = Core::GetInst()->GetResolution();
 	//Monster* pMonster = nullptr;

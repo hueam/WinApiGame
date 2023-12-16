@@ -35,7 +35,7 @@ Lockers::Lockers(Scene* curScene, float lockerSize, Vec2 pos)
 				WaterBottle* bottle = new WaterBottle();
 				bottle->SetOwner(temp);
 				bottle->SetPos(Vec2(x, y + lockerSize * 0.2f));
-				bottle->SetScale(Vec2(20.f, lockerSize * 0.5f));
+				bottle->SetScale(Vec2(lockerSize*0.5f, lockerSize * 0.5f));
 				curScene->AddObject(bottle, RENDER_ORDER::TWO);
 			}
 		}
