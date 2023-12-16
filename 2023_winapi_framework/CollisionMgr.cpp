@@ -245,9 +245,7 @@ bool CollisionMgr::IsCollision(Collider* _pLeft, bool isUI)
 	Vec2 vPos = _pLeft->GetFinalPos();
 	Vec2 vScale = _pLeft->GetScale();
 
-	Vec2 vCamScale = CameraMgr::GetInst()->GetScale();
-
-	Vec2 vRenderScale = vScale * vCamScale;
+	Vec2 vRenderScale = CameraMgr::GetInst()->AdjustScale(vScale);
 	if (isUI)
 	{
 		if ((vPos.x + vScale.x * 0.5f) > posPoint.x && (vPos.x - vScale.x * 0.5f) < posPoint.x)

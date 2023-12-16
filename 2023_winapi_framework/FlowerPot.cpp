@@ -2,7 +2,6 @@
 #include "FlowerPot.h"
 #include "CameraMgr.h"
 #include "ResMgr.h"
-#include "Core.h"
 #include "Texture.h"
 #include "Inventory.h"
 #include "KeyMgr.h"
@@ -68,19 +67,9 @@ void FlowerPot::Render(HDC _dc)
 
 	Vec2 vPos = GetPos();
 	Vec2 vScale = GetScale();
-	Vec2 vCamPos = CameraMgr::GetInst()->GetPos();
-	Vec2 vCamScale = CameraMgr::GetInst()->GetScale();
-	Vec2 vMinusCamScale = CameraMgr::GetInst()->GetScale();
-	vMinusCamScale.x -= 1;
-	vMinusCamScale.y -= 1;
 
-	Vec2 vRenderPos = vPos - vCamPos;
-	Vec2 vRenderScale = vScale * vCamScale;
-
-	Vec2 vResolution = Core::GetInst()->GetResolution();
-	vResolution.x = vResolution.x / 2;
-	vResolution.y = vResolution.y / 2;
-	vRenderPos = vRenderPos + (vRenderPos - vResolution) * vMinusCamScale;
+	Vec2 vRenderPos = CameraMgr::GetInst()->AdjustPos(vPos);
+	Vec2 vRenderScale = CameraMgr::GetInst()->AdjustScale(vScale);
 
 	int Width = curTex->GetWidth();
 	int Height = curTex->GetHeight();

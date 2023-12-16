@@ -3,7 +3,6 @@
 #include "Object.h"
 #include "SelectGDI.h"
 #include "CameraMgr.h"
-#include "Core.h"
 
 UINT Collider::m_sNextID = 0;
 Collider::Collider()
@@ -40,23 +39,14 @@ void Collider::Render(HDC _dc, bool isUI)
 	PEN_TYPE ePen = PEN_TYPE::GREEN;
 	if (m_check)
 		ePen = PEN_TYPE::RED;
-	SelectGDI pen(_dc, ePen);
-	SelectGDI brush(_dc, BRUSH_TYPE::HOLLOW);
+	
+
+
 	Vec2 vPos = m_pOwner->GetPos();
 	Vec2 vScale = m_pOwner->GetScale();
-	Vec2 vCamPos = CameraMgr::GetInst()->GetPos();
-	Vec2 vCamScale = CameraMgr::GetInst()->GetScale();
-	Vec2 vMinusCamScale = CameraMgr::GetInst()->GetScale();
-	vMinusCamScale.x -= 1;
-	vMinusCamScale.y -= 1;
+	Vec2 vRenderPos = CameraMgr::GetInst()->AdjustPos(vPos);
+	Vec2 vRenderScale = CameraMgr::GetInst()->AdjustScale(vScale);
 
-	Vec2 vRenderPos = vPos - vCamPos;
-	Vec2 vRenderScale = vScale * vCamScale;
-
-	Vec2 vResolution = Core::GetInst()->GetResolution();
-	vResolution.x = vResolution.x / 2;
-	vResolution.y = vResolution.y / 2;
-	vRenderPos = vRenderPos + (vRenderPos - vResolution) * vMinusCamScale;
 	if (isUI)
 		RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
 	else
@@ -84,19 +74,10 @@ void Collider::FinalUpdate(bool isUI)
 {
 	// Object위치를 따라가야 하는거야
 	Vec2 vObjPos = m_pOwner->GetPos();
+	Vec2 vObjScale = m_pOwner->GetScale();
 
-	Vec2 vCamPos = CameraMgr::GetInst()->GetPos();
-	Vec2 vCamScale = CameraMgr::GetInst()->GetScale();
-	Vec2 vMinusCamScale = CameraMgr::GetInst()->GetScale();
-	vMinusCamScale.x -= 1;
-	vMinusCamScale.y -= 1;
-
-	Vec2 vRenderPos = vObjPos - vCamPos;
-
-	Vec2 vResolution = Core::GetInst()->GetResolution();
-	vResolution.x = vResolution.x / 2;
-	vResolution.y = vResolution.y / 2;
-	vRenderPos = vRenderPos + (vRenderPos - vResolution) * vMinusCamScale;
+	
+	Vec2 vRenderPos = CameraMgr::GetInst()->AdjustPos(vObjPos);
 	if (isUI)
 		m_vFinalPos = vObjPos;
 	else

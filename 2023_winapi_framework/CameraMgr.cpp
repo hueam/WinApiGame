@@ -37,3 +37,30 @@ void CameraMgr::AddPos(const int x, const int y)
 	m_vCamPos.y += y;
 }
 
+
+Vec2& CameraMgr::AdjustPos(Vec2& pos)
+{
+	Vec2 vMinusCamScale = m_vCamScale;
+	vMinusCamScale.x -= 1;
+	vMinusCamScale.y -= 1;
+
+	//float multiplier = vScale.x / 400;
+
+	Vec2 vRenderPos = pos - m_vCamPos;
+
+	Vec2 vResolution = Core::GetInst()->GetResolution();
+	vResolution.x = vResolution.x / 2;
+	vResolution.y = vResolution.y / 2;
+	vRenderPos = vRenderPos + (vRenderPos - vResolution) * vMinusCamScale;
+
+	return vRenderPos;
+}
+
+Vec2& CameraMgr::AdjustScale(Vec2& scale)
+{
+	//float multiplier = vScale.x / 400;
+
+	Vec2 vRenderScale = scale * m_vCamScale;
+	return vRenderScale;
+}
+
