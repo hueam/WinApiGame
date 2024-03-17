@@ -47,10 +47,10 @@ void Collider::Render(HDC _dc, bool isUI)
 	Vec2 vRenderPos = CameraMgr::GetInst()->AdjustPos(vPos);
 	Vec2 vRenderScale = CameraMgr::GetInst()->AdjustScale(vScale);
 
-	if (isUI)
-		RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
-	else
-		RECT_RENDER(vRenderPos.x, vRenderPos.y, vRenderScale.x, vRenderScale.y, _dc);
+	//if (isUI)
+	//	RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
+	//else
+	//	RECT_RENDER(vRenderPos.x, vRenderPos.y, vRenderScale.x, vRenderScale.y, _dc);
 }
 
 void Collider::EnterCollision()

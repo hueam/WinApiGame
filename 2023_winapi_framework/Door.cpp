@@ -99,6 +99,10 @@ void Door::Render(HDC _dc)
 
 void Door::End()
 {
+	SceneMgr::GetInst()->ReleaseScene(L"West_Game_Scene");
+	SceneMgr::GetInst()->ReleaseScene(L"East_Game_Scene");
+	SceneMgr::GetInst()->ReleaseScene(L"North_Game_Scene");
+	SceneMgr::GetInst()->ReleaseScene(L"South_Game_Scene");
 	SceneMgr::GetInst()->LoadScene(L"End_Scene");
 	SceneUI::ClearDontDestroyUI();
 }

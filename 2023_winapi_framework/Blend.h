@@ -1,5 +1,4 @@
 #pragma once
-#include "Game_Scene.h";
 #include <functional>
 
 class Blend
@@ -19,6 +18,7 @@ public:
 	void Reset();
 	void SetBlend(RECT& newRect);
 	void EndBlend();
+	const bool& GetRunning() { return running; }
 private:
 	float startValue;
 	float endValue;

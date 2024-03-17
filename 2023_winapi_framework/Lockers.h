@@ -2,7 +2,7 @@
 #include "Object.h"
 
 class Scene;
-class Lockers : public Object
+class Lockers
 {
 public:
     Lockers(Scene* curScene,float lockerSize, Vec2 pos);

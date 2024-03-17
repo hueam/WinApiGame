@@ -6,6 +6,7 @@
 #include "KeyMgr.h"
 #include "CameraMgr.h"
 #include "Texture.h"
+#include "TextMgr.h"
 
 Post::Post(Locker* owner)
 	:isEnter(false)
@@ -26,9 +27,17 @@ void Post::Update()
 	col->SetEnable(owner->GetIsOpen());
 	if (KEY_DOWN(KEY_TYPE::LBUTTON) && isEnter)
 	{
-		CameraMgr::GetInst()->SetPos(m_vPos);
-		CameraMgr::GetInst()->SetScale(3);
-		CameraMgr::GetInst()->SetFocusingObj(this);
+		if (CameraMgr::GetInst()->GetFocusingObj() == this)
+		{
+			TextMgr::GetInst()->SetText(L"이 숫자들은 뭘 의미하는 걸까");
+			TextMgr::GetInst()->SetText(L"사물함이 15번까지 있긴한데..");
+		}
+		else
+		{
+			CameraMgr::GetInst()->SetPos(m_vPos);
+			CameraMgr::GetInst()->SetScale(3);
+			CameraMgr::GetInst()->SetFocusingObj(this);
+		}
 	}
 }
 

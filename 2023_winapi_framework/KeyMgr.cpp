@@ -1,13 +1,14 @@
 #include "pch.h"
 #include "KeyMgr.h"
 #include "CameraMgr.h"
+#include "TextMgr.h"
 #include "Core.h"
 #include "Item.h"
 void KeyMgr::Init()
 {
 	for (int i = 0; i < (int)KEY_TYPE::LAST; ++i)
 	{
-		m_vecKey.push_back(tKeyInfo{KEY_STATE::NONE, false});
+		m_vecKey.push_back(tKeyInfo{ KEY_STATE::NONE, false });
 	}
 	m_ptMouse = {};
 }
@@ -15,7 +16,7 @@ void KeyMgr::Init()
 void KeyMgr::Update()
 {
 	HWND hWnd = GetFocus();
-//	HWND hMainHwnd = Core::GetInst()->GetHwnd();
+	//	HWND hMainHwnd = Core::GetInst()->GetHwnd();
 	if (hWnd != nullptr)
 	{
 		for (int i = 0; i < (int)KEY_TYPE::LAST; ++i)
@@ -53,11 +54,14 @@ void KeyMgr::Update()
 		GetCursorPos(&m_ptMouse); // 마우스 커서 좌표 받기
 		// 우리가 가진 윈도우 창 기준으로 좌표 변경
 		ScreenToClient(Core::GetInst()->GetHwnd(), &m_ptMouse);
-		if (!isEnterCollision && KEY_DOWN(KEY_TYPE::LBUTTON))
+		if (!TextMgr::GetInst()->GetEnable())
 		{
-			CameraMgr::GetInst()->Init();
+			if (!isEnterCollision && KEY_DOWN(KEY_TYPE::LBUTTON))
+			{
+				CameraMgr::GetInst()->Init();
+			}
 		}
-		if(m_pPickItem != nullptr)
+		if (m_pPickItem != nullptr)
 			m_pPickItem->SetPos(Vec2(GetMousePos()));
 	}
 
@@ -75,6 +79,6 @@ void KeyMgr::Update()
 				m_vecKey[i].eState = KEY_STATE::NONE;
 		}
 	}
-	
+
 
 }

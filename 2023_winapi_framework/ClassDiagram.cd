@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Door">
+    <Position X="9.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAACAAAAAAMAAAAAAgAAAQgAAEAAAAQBAAAKAAAAA=</HashCode>
+      <FileName>Door.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoorLock">
+    <Position X="2.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIAAAAEAAEAKAAAEBAAAAAAAIAQBAIAAACAAA=</HashCode>
+      <FileName>DoorLock.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlowerPot">
+    <Position X="4.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAUABAEAAAAAUAAAAAAAAAAAAAAAAAAAYBAAAAACCCA=</HashCode>
+      <FileName>FlowerPot.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Locker">
+    <Position X="6.25" Y="8.25" Width="1.5" />
+    <InheritanceLine Type="Object">
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="-1.428" Y="0.067" />
+      </InheritanceModifierLabel>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAACAEgCAAAAAABAQAQAECAAAQBAQAKAAAAg=</HashCode>
+      <FileName>Locker.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NumPad">
+    <Position X="13.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAIkAAAAAAAAAAAAAAAAAAAQBAAAAAAAQA=</HashCode>
+      <FileName>NumPad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Post">
+    <Position X="11.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAkAAAAAAAAAAACAAAAAAAQBAAAAACCAA=</HashCode>
+      <FileName>Post.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TouchTextObject">
+    <Position X="18.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAIAAAAgEAAAAAAAAAACAAAAQAAQQBAAAAAAAAA=</HashCode>
+      <FileName>TouchTextObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrashCan">
+    <Position X="8" Y="8.25" Width="1.5" />
+    <InheritanceLine Type="Object">
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="2.04" Y="0.06" />
+      </InheritanceModifierLabel>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAEAAAAAAAAIAAAAAACAAAQBEAAAACAAA=</HashCode>
+      <FileName>TrashCan.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnusedObj">
+    <Position X="15" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACEQAAEAAAAAAAAAAAAAAAQBAAAAACAAA=</HashCode>
+      <FileName>UnusedObj.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaterBottle">
+    <Position X="20.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CASAAAAIAAAAEAAAAAAAAABAAAAAAAAAQBAAAAACAAA=</HashCode>
+      <FileName>WaterBottle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Window">
+    <Position X="16.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQEAAgAAAAAAAQAQAEAAAAQBAACKAAAAA=</HashCode>
+      <FileName>Window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Object" Collapsed="true">
+    <Position X="11.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QMQAAAAAAQAAMAAhAIEAAApQAAAACAAAIBAAwgEARAA=</HashCode>
+      <FileName>Object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIObject">
+    <Position X="22" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAAAAAAAAAAAAIAAAQACAAAABAAAAACAAA=</HashCode>
+      <FileName>UIObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrashCanPopup">
+    <Position X="19.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAABAAA=</HashCode>
+      <FileName>TrashCanPopup.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Slot">
+    <Position X="21.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAAAAAAEAAAAAAAAAAAAQAAAAAAQBAAQAAAAgA=</HashCode>
+      <FileName>Slot.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Key">
+    <Position X="26" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAAAAkAQAAAAAAAAAAAAAAAAAQBAAAAAAAAA=</HashCode>
+      <FileName>Key.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item">
+    <Position X="17" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAACAAEAAAAAAAAACEAAAECICAQhAIAAIAAAA=</HashCode>
+      <FileName>Item.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InventoryUI">
+    <Position X="23.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAgAAAAAAAAAAAAAIAkAAAAAAAABAGADAAAAA=</HashCode>
+      <FileName>InventoryUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ButtonUI">
+    <Position X="28.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAIAAAAAEAAAAAAAAAAABACAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>ButtonUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PopUpTexture">
+    <Position X="19.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAsAAAAAAAAAAAAAAFAAAAQBAAAACQIAA=</HashCode>
+      <FileName>PopUpTexture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

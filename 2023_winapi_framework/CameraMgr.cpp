@@ -44,8 +44,6 @@ Vec2& CameraMgr::AdjustPos(Vec2& pos)
 	vMinusCamScale.x -= 1;
 	vMinusCamScale.y -= 1;
 
-	//float multiplier = vScale.x / 400;
-
 	Vec2 vRenderPos = pos - m_vCamPos;
 
 	Vec2 vResolution = Core::GetInst()->GetResolution();
@@ -58,8 +56,6 @@ Vec2& CameraMgr::AdjustPos(Vec2& pos)
 
 Vec2& CameraMgr::AdjustScale(Vec2& scale)
 {
-	//float multiplier = vScale.x / 400;
-
 	Vec2 vRenderScale = scale * m_vCamScale;
 	return vRenderScale;
 }

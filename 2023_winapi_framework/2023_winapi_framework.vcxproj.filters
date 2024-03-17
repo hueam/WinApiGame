@@ -71,6 +71,15 @@
     <Filter Include="Engine\05. Scene\MainScene\Game_Scene">
       <UniqueIdentifier>{1de1ed1d-b334-41c8-96af-f3e80c39d160}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\CamareMgr">
+      <UniqueIdentifier>{699ee7d1-e916-4e07-aadb-46e93188e42c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\Inventory">
+      <UniqueIdentifier>{91ce7984-330a-4b4c-b3af-56248d4da17e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\TextMgr">
+      <UniqueIdentifier>{513d1c47-7ead-4635-8a9e-2dc434c8eb40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -151,9 +160,6 @@
     <ClInclude Include="2023_winapi_framework.h">
       <Filter>Default</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClInclude>
     <ClInclude Include="UIObject.h">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClInclude>
@@ -163,11 +169,9 @@
     <ClInclude Include="ButtonUI.h">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClInclude>
-    <ClInclude Include="Inventory.h" />
     <ClInclude Include="InventoryUI.h">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClInclude>
-    <ClInclude Include="CameraMgr.h" />
     <ClInclude Include="West_Game_Scene.h">
       <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
     </ClInclude>
@@ -180,7 +184,6 @@
     <ClInclude Include="East_Game_Scene.h">
       <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Game_Scene.h" />
     <ClInclude Include="Locker.h">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
@@ -202,18 +205,54 @@
     <ClInclude Include="TrashCan.h">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
-    <ClInclude Include="TrashCanPopup.h" />
-    <ClInclude Include="Key.h" />
-    <ClInclude Include="Post.h" />
-    <ClInclude Include="Door.h" />
-    <ClInclude Include="UnusedObj.h" />
-    <ClInclude Include="FlowerPot.h" />
-    <ClInclude Include="DoorLock.h" />
-    <ClInclude Include="NumPad.h" />
-    <ClInclude Include="Blend.h" />
-    <ClInclude Include="End_Scene.h" />
-    <ClInclude Include="TextMgr.h" />
-    <ClInclude Include="TouchTextObject.h" />
+    <ClInclude Include="CameraMgr.h">
+      <Filter>Engine\03. Manager\CamareMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Blend.h">
+      <Filter>Engine\08. Module</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorLock.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Game_Scene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Engine\03. Manager\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="UnusedObj.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="FlowerPot.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="NumPad.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Post.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="TouchTextObject.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="End_Scene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TrashCanPopup.h">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClInclude>
+    <ClInclude Include="TextMgr.h">
+      <Filter>Engine\03. Manager\TextMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -289,9 +328,6 @@
     <ClCompile Include="Animator.cpp">
       <Filter>Engine\07. Component</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Engine\04. Object\MainObject</Filter>
-    </ClCompile>
     <ClCompile Include="UIObject.cpp">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClCompile>
@@ -301,11 +337,9 @@
     <ClCompile Include="ButtonUI.cpp">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClCompile>
-    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="InventoryUI.cpp">
       <Filter>Engine\04. Object\UIs</Filter>
     </ClCompile>
-    <ClCompile Include="CameraMgr.cpp" />
     <ClCompile Include="West_Game_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
     </ClCompile>
@@ -318,7 +352,6 @@
     <ClCompile Include="East_Game_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene\Game_Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Scene.cpp" />
     <ClCompile Include="Locker.cpp">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
@@ -340,17 +373,56 @@
     <ClCompile Include="WaterBottle.cpp">
       <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
-    <ClCompile Include="TrashCanPopup.cpp" />
-    <ClCompile Include="Key.cpp" />
-    <ClCompile Include="Post.cpp" />
-    <ClCompile Include="Door.cpp" />
-    <ClCompile Include="UnusedObj.cpp" />
-    <ClCompile Include="FlowerPot.cpp" />
-    <ClCompile Include="DoorLock.cpp" />
-    <ClCompile Include="NumPad.cpp" />
-    <ClCompile Include="Blend.cpp" />
-    <ClCompile Include="End_Scene.cpp" />
-    <ClCompile Include="TextMgr.cpp" />
-    <ClCompile Include="TouchTextObject.cpp" />
+    <ClCompile Include="CameraMgr.cpp">
+      <Filter>Engine\03. Manager\CamareMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Blend.cpp">
+      <Filter>Engine\08. Module</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorLock.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Engine\03. Manager\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="FlowerPot.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="NumPad.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Post.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="TouchTextObject.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="UnusedObj.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="End_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TrashCanPopup.cpp">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClCompile>
+    <ClCompile Include="TextMgr.cpp">
+      <Filter>Engine\03. Manager\TextMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>Engine\04. Object\UIs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

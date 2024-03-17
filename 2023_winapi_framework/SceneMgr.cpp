@@ -6,7 +6,6 @@
 #include "East_Game_Scene.h"
 #include "South_Game_Scene.h"
 #include "End_Scene.h"
-#include "Blend.h"
 #include "Core.h"
 
 void SceneMgr::Init()
@@ -49,6 +48,7 @@ void SceneMgr::Render(HDC _dc)
 void SceneMgr::LoadScene(const wstring& _scenename)
 {
 	// ¾ÀÀÌ ÀÖÀ¸¸é
+	currentScene = 0;
 	if (m_pCurScene != nullptr)
 	{
 		m_pCurScene->Release();
@@ -69,6 +69,15 @@ void SceneMgr::InitScene(const wstring& _scenename)
 	if (iter != m_mapScenes.end())
 	{
 		iter->second->Init();
+	}
+}
+
+void SceneMgr::ReleaseScene(const wstring& _scenename)
+{
+	auto iter = m_mapScenes.find(_scenename);
+	if (iter != m_mapScenes.end())
+	{
+		iter->second->Release();
 	}
 }
 

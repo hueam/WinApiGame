@@ -7,8 +7,7 @@
 
 Lockers::Lockers(Scene* curScene, float lockerSize, Vec2 pos)
 {
-	m_vPos = pos;
-	Vec2 lockPos(m_vPos.x - lockerSize * 0.5f, m_vPos.y - lockerSize * 0.5f);
+	Vec2 lockPos(pos.x - lockerSize * 0.5f, pos.y - lockerSize * 0.5f);
 	for (int i = 4; i >= 0; i--)
 	{
 		float x = lockPos.x + lockerSize * i;

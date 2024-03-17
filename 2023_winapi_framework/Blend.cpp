@@ -43,7 +43,8 @@ void Blend::Update()
 			{
 				curTime = time;
 			}
-			blend->SourceConstantAlpha = startValue * (1 - (time - curTime) / (time*0.5f)) + endValue * (time - curTime) / (time * 0.5f);
+			blend->SourceConstantAlpha = startValue * (1 - (time - curTime) / (time*0.5f))
+				+ endValue * (time - curTime) / (time * 0.5f);
 		}
 	}
 	else

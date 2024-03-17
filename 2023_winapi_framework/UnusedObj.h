@@ -16,7 +16,6 @@ public:
 
 private:
     bool isEnter;
-
     Texture* m_pTex;
 };
 
